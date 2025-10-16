@@ -481,17 +481,17 @@ END:VCARD`}
 
       {/* NFC icons */}
       <div className="mt-2 flex flex-col items-center justify-center gap-2">
-        <div className="flex items-center justify-center w-6 h-6 rounded-full border border-blue-400 bg-[#102A49] hover:bg-blue-900 transition">
+        <div className="flex items-center justify-center w-6 h-6 rounded-full border border-blue-400 bg-[#0d99ff] hover:bg-blue-900 transition">
           <img
-            src="/images/nfc card4.png"
+            src="/images/nfc card5.png"
             alt="NFC"
             className="w-4.5 h-4.5 object-contain animate-pulse"
 
           />
         </div>
-        <div className="flex items-center justify-center w-6 h-6 rounded-full border border-blue-400 bg-[#102A49] hover:bg-blue-900 transition">
+        <div className="flex items-center justify-center w-6 h-6 rounded-full border border-blue-400 bg-blue-900 hover:bg-blue-900 transition">
           <img
-            src="/images/nfc_card.png"
+            src="/images/nfc card5.png"
             alt="NFC"
             className="w-4.5 h-4.5 object-contain animate-pulse"
           />

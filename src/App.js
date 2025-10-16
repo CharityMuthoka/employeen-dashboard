@@ -14,7 +14,7 @@ import Support from './components/Support';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [activePage, setActivePage] = useState("dashboard"); // default page
+  const [activePage, setActivePage] = useState("dashboard"); 
 
   const handleLogin = () => {
     setIsAuthenticated(true);
