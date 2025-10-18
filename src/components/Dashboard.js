@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect} from "react";
 import LeaveModal from "./LeaveModal.js";
 import LogTaskModal from "./LogTaskModal.js";
 import { QRCodeCanvas } from 'qrcode.react';
-
+import FlippableCard from "./FlippableCard.js";
 
 
 
@@ -50,6 +50,19 @@ const profileUrl = "/images/avatar_5.png";
 const org="Ontap Global Workspace";
 const phoneNumber="0734253627";
 const signature="signature";
+
+
+<FlippableCard
+  name={name}
+  role={role}
+  department={department}
+  staffId={staffId}
+  validThru={validThru}
+  profileUrl={profileUrl}
+  org={org}
+  phoneNumber={phoneNumber}
+  signature={signature}
+/>
 
 
 
@@ -265,258 +278,13 @@ useEffect(() => {
 </div>
 
 
-{/* === card section === */}
-<div className="relative flex justify-between items-center p-4 rounded-xl h-[150px] shadow-lg bg-[#0B1E35] text-white transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl overflow-hidden">
-
  
-{/* === Left Column: Logo, Profile Photo & Name === */}
-<div className="flex flex-col items-center justify-start space-y-2">
-  {/* Logo */}
-  <div className="flex flex-col items-start mb-1">
-    <div className="flex items-center space-x-1">
-      <img 
-        src="images/logo.png" 
-        alt="ONTAP logo" 
-        className="w-4 h-4 object-contain"
-      />        
-      <h1 className="text-[13px] font-bold tracking-wide">ONTAP</h1>
-    </div>
-    <p className="text-[7px] text-gray-300 tracking-widest">GLOBAL WORKSPACE</p>
-  </div>
-
-  {/* Profile Image */}
-  <div className="w-[60px] h-[60px] rounded-md overflow-hidden border border-gray-500">
-
-    <img
-      src={profileUrl}
-      alt={`${name} Profile`}
-      className="w-full h-full object-cover"
-    />
-  </div>
-
-  {/* === name section === */}
-  <h3 className="font-semibold italic text-[11px]">{name}</h3>
-</div>
-
-
-
-
-  {/* === Staff Details === */}
-  <div className="flex flex-col justify-between h-full ml-2">
-    <div>
-      <h2 className="text-[12px] font-bold leading-tight">{name}</h2>
-      <p className="text-[9px] text-gray-300">{role}</p>
-    </div>
-
-    <div className="mt-1">
-      <p className="text-[10px] text-gray-400 uppercase">Department</p>
-      <p className="text-[9px] font-semibold text-white">{department}</p>
-    </div>
-
-    <div className="mt-1">
-      <p className="text-[10px] text-gray-400 uppercase">Staff ID</p>
-      <p className="text-[9px] font-semibold text-white">{staffId}</p>
-    </div>
-
-    {/* Valid Thru */}
-    <div className="text-center mt-[2px] mb-4">
-      
-    </div>
-
-    <div className="absolute bottom-2 left-1/2 transform -translate-x-[5%] text-center">
-    <p className="text-[10px] text-gray-400 font-semibold uppercase leading-tight">
-      Valid Thru
-    </p>
-    <p className="text-[9px] font-semibold text-white leading-tight">
-      {validThru}
-    </p>
-  </div>
-  </div>
-
-  {/* === Right Section: QR and NFC sections === */}
-  <div className="flex flex-col items-center justify-between h-full">
-    {/* QR Code */}
-    <div className="bg-white rounded-md p-[2px] flex items-center justify-center shadow-md w-16 h-16 border border-gray-200">
-      <QRCodeCanvas
-        value={`BEGIN:VCARD
-VERSION:3.0
-FN:${name}
-TITLE:${role}
-ORG:${org}
-TEL:${phoneNumber}
-EMAIL:${name.split(" ")[0].toLowerCase()}@ontapke.com
-URL:https://ontapke.com
-END:VCARD`}
-        size={60}
-        bgColor="#ffffff"
-        fgColor="#000000"
-        level="H"
-      />
-    </div>
-    {/* NFC Icon */}
-    <div className="mt-2 flex items-center justify-center w-6 h-6 rounded-full border border-blue-400 bg-[#102A49] hover:bg-blue-900 transition">
-      <img
-        src="/images/nfc_card.png"
-        alt="NFC"
-        className="w-4.5 h-4.5 object-contain animate-pulse"
-      />
-    </div> 
-
-    {/* NFC Icon */}
-    <div className="mt-2 flex items-center justify-center w-6 h-6 rounded-full border border-blue-400 bg-[#102A49] hover:bg-blue-900 transition">
-      <img
-        src="/images/nfc_card.png"
-        alt="NFC"
-        className="w-4.5 h-4.5 object-contain animate-pulse"
-      />
-    </div> 
-    
-</div>
-</div>
-
-
+ 
  
  
 
 
- {/* === card 2 === */}
-{/* === Card Section === */}
-<div className="relative flex flex-wrap items-start p-4 rounded-xl h-auto min-h-[170px] shadow-lg bg-[#0B1E35] text-white transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl overflow-hidden">
-
-{/* === Left Column: Logo === */}
-<div className="flex flex-col items-start justify-start space-y-2 flex-shrink-0">
-  {/* Logo */}
-  <div className="flex flex-col items-start mb-1">
-    <div className="flex items-center space-x-1">
-      <img 
-        src="images/logo.png" 
-        alt="ONTAP logo" 
-        className="w-4 h-4 object-contain"
-      />        
-      <h1 className="text-[13px] font-bold tracking-wide">ONTAP</h1>
-    </div>
-    <p className="text-[7px] text-gray-300 tracking-widest">GLOBAL WORKSPACE</p>
-  </div>
-
-  {/* Profile Image */}
-  <div className="w-[60px] h-[60px] rounded-md overflow-hidden border border-gray-500">
-    <img
-      src={profileUrl}
-      alt={`${name} Profile`}
-      className="w-full h-full object-cover"
-    />
-  </div>
-
-  {/* === Name and Staff ID === */}
-  <div className="flex items-center space-x-2 mt-6 w-full min-w-0">
-    <h3 className="font-semibold italic text-[6px] truncate max-w-[80px]">{name}</h3>
-    <div className="flex flex-col leading-tight min-w-0">
-      <p className="text-[10px] text-gray-400 uppercase">Staff ID</p>
-      <p className="text-[9px] font-semibold text-white break-all">{staffId}</p>
-    </div>
-  </div>
-</div>
-
-{/* === Valid Thru === */}
-<div className="absolute bottom-5 left-1/2 transform -translate-x-[25%] text-center">
-  <p className="text-[10px] text-gray-400 font-semibold uppercase leading-tight">
-    Valid Thru
-  </p>
-  <p className="text-[9px] font-semibold text-white leading-tight">
-    {validThru}
-  </p>
-</div>
-
-{/* === Staff Details === */}
-<div className="flex flex-col ml-[-2px] mt-8 space-y-2 min-w-0 flex-grow">
-  <div className="min-w-0">
-    <h2 className="text-[12px] font-bold leading-tight truncate">{name}</h2>
-    <p className="text-[9px] text-gray-300 truncate">{role}</p>
-  </div>
-
-  <div className="min-w-0">
-    <p className="text-[10px] text-gray-400 uppercase">Department</p>
-    <p className="text-[9px] font-semibold text-white truncate">{department}</p>
-  </div>
-</div>
-
-{/* Right Section: QR, NFC, and Three Dots */}
-<div className="flex flex-col items-center justify-between h-full ml-3 relative">
-
-  {/* QR Code */}
-  <div className="bg-white rounded-md p-[2px] flex items-center justify-center shadow-md w-16 h-16 border border-gray-200">
-    <QRCodeCanvas
-      value={`BEGIN:VCARD
-VERSION:3.0
-FN:${name}
-TITLE:${role}
-ORG:${org}
-TEL:${phoneNumber}
-EMAIL:${name.split(" ")[0].toLowerCase()}@ontapke.com
-URL:https://ontapke.com
-END:VCARD`}
-      size={60}
-      bgColor="#ffffff"
-      fgColor="#000000"
-      level="H"
-    />
-  </div>
-
-  {/* NFC Icon 1 */}
-<div className="mt-2 flex items-center justify-center w-6 h-6 rounded-full border border-blue-400 bg-[#102A49] hover:bg-blue-900 transition">
-<img
-  src="/images/nfc_card.png"
-  alt="NFC"
-  className="w-4.5 h-4.5 object-contain animate-pulse"
-/>
-</div>
-
-{/* NFC Icon 2  */}
-<div className="mt-2 relative flex items-center justify-center w-6 h-6 rounded-full border border-blue-400 bg-[#102A49] hover:bg-blue-900 transition">
-<img
-  src="/images/nfc_card.png"
-  alt="NFC"
-  className="w-4.5 h-4.5 object-contain animate-pulse"
-/>
-
-{/* Three Dots Menu */}
-<div className="absolute top-1/2 left-full ml-2 -translate-y-1/2" ref={menuRef}>
-  <button
-    onClick={() => setIsMenuOpen((open) => !open)}
-    className="w-6 h-6 flex items-center justify-center rounded-full hover:bg-gray-700 focus:outline-none"
-    aria-label="Options"
-  >
-    {/* vertical dots icon */}
-    <svg
-      className="w-4 h-4 text-white"
-      fill="currentColor"
-      viewBox="0 0 20 20"
-    >
-      <circle cx="10" cy="3" r="2" />
-      <circle cx="10" cy="10" r="2" />
-      <circle cx="10" cy="17" r="2" />
-    </svg>
-  </button>
-
-  {/* Dropdown */}
-  {isMenuOpen && (
-    <div className="absolute right-0 mt-1 w-20 bg-[#102A49] rounded-md shadow-lg z-10">
-      <button
-        onClick={() => {
-          setIsMenuOpen(false);
-          setActivePage ('cards')        
-       }}
-        className="block w-full text-left px-3 py-1 text-white hover:bg-blue-700 rounded-md"
-      >
-        Edit
-      </button>
-    </div>
-  )}
-</div>
-</div>
-
-</div>
-</div>
+ 
 
 
 {/* === card 3 === */}
@@ -660,6 +428,24 @@ END:VCARD`}
     </p>
   </div>
 </div>
+
+
+{/* === }
+<div>
+<FlippableCard
+  name={name}
+  role={role}
+  department={department}
+  staffId={staffId}
+  validThru={validThru}
+  profileUrl={profileUrl}
+  org={org}
+  phoneNumber={phoneNumber}
+  signature={signature}
+/>
+</div>
+
+===*/}
 
 
 
