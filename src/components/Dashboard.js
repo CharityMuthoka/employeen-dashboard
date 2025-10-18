@@ -47,8 +47,9 @@ const department="Design";
 const staffId="EMP4526";
 const validThru = "05/24/2026";
 const profileUrl = "/images/avatar_5.png";
-const org="Ontap Global Workspace"
-const phoneNumber="0734253627"
+const org="Ontap Global Workspace";
+const phoneNumber="0734253627";
+const signature="signature";
 
 
 
@@ -378,7 +379,7 @@ END:VCARD`}
  
 
 
- 
+ {/* === card 2 === */}
 {/* === Card Section === */}
 <div className="relative flex flex-wrap items-start p-4 rounded-xl h-auto min-h-[170px] shadow-lg bg-[#0B1E35] text-white transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl overflow-hidden">
 
@@ -517,6 +518,8 @@ END:VCARD`}
 </div>
 </div>
 
+
+{/* === card 3 === */}
 {/* === Card Section === */}
 <div className="relative flex flex-col sm:flex-row items-stretch justify-between p-3 sm:p-4 rounded-xl shadow-lg bg-[#0B1E35] text-white transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl overflow-hidden min-h-[160px] max-h-[220px] w-full">
 
@@ -524,7 +527,7 @@ END:VCARD`}
   <div className="flex flex-col justify-between h-full flex-shrink-0 space-y-1 sm:space-y-2">
     
     {/* Logo */}
-    <div className="flex flex-col items-start">
+    <div className="flex flex-col items-start -mt-1 sm:-mt-2">
       <div className="flex items-center space-x-1">
         <img 
           src="images/logo.png" 
@@ -537,7 +540,8 @@ END:VCARD`}
     </div>
 
     {/* Profile Image */}
-    <div className="w-[50px] h-[50px] sm:w-[55px] sm:h-[55px] rounded-md overflow-hidden border border-gray-500">
+    <div className="w-[60px] h-[60px] sm:w-[80px] sm:h-[80px] md:w-[90px] md:h-[90px] rounded-lg overflow-hidden border border-gray-500">
+
       <img
         src={profileUrl}
         alt={`${name} Profile`}
@@ -547,32 +551,35 @@ END:VCARD`}
 
     {/* Name & Staff ID */}
     <div className="flex items-center justify-between mt-2 w-full space-x-2">
-      <h3 className="font-semibold italic text-[6.5px] sm:text-[7px] truncate max-w-[60px] sm:max-w-[70px]">{name}</h3>
-      <div className="flex flex-col leading-tight min-w-0">
-        <p className="text-[7px] sm:text-[8px] text-gray-400 uppercase">Staff ID</p>
-        <p className="text-[7px] sm:text-[8px] font-semibold text-white break-all">{staffId}</p>
-      </div>
-    </div>
+  <h3 className="font-semibold italic text-[9px] sm:text-[10px] truncate max-w-[80px] sm:max-w-[90px]">
+    {signature}
+  </h3>
+  <div className="flex flex-col leading-tight min-w-0">
+    <p className="text-[8px] sm:text-[9px] text-gray-400 uppercase">Staff ID</p>
+    <p className="text-[9px] sm:text-[10px] font-semibold text-white break-all">{staffId}</p>
+  </div>
+</div>
   </div>
 
   {/* === Middle Section: Staff Details === */}
-  <div className="flex flex-col justify-center flex-grow h-full px-2 sm:px-3 mt-2 sm:mt-0 overflow-hidden">
-    <div className="min-w-0">
-      <h2 className="text-[11px] sm:text-[9px] font-bold leading-tight truncate">{name}</h2>
-      <p className="text-[8px] sm:text-[8px] text-gray-300 truncate">{role}</p>
-    </div>
-
-    <div className="min-w-0 mt-1.5 sm:mt-2">
-      <p className="text-[8px] sm:text-[10px] text-gray-400 uppercase">Department</p>
-      <p className="text-[8px] sm:text-[9px] font-semibold text-white truncate">{department}</p>
-    </div>
+  <div className="flex flex-col justify-center flex-grow h-full px-1 sm:px-2 mt-2 sm:mt-0 overflow-hidden">
+  <div className="min-w-0">
+    <h2 className="text-[13px] sm:text-[14px] font-bold leading-tight truncate">{name}</h2>
+    <p className="text-[10px] sm:text-[11px] text-gray-200 truncate">{role}</p>
   </div>
 
+  <div className="min-w-0 mt-2 sm:mt-2.5">
+    <p className="text-[9px] sm:text-[10px] text-gray-400 uppercase tracking-wide">Department</p>
+    <p className="text-[11px] sm:text-[12px] font-semibold text-white truncate">{department}</p>
+  </div>
+</div>
+
   {/* === Right Section: QR + NFC + Menu === */}
-  <div className="flex flex-row sm:flex-col items-center justify-between sm:justify-around h-full mt-3 sm:mt-0 relative gap-2 sm:gap-0">
+  <div className="flex flex-row sm:flex-col items-center justify-between sm:justify-around h-full mt-5 sm:mt-4 relative gap-2 sm:gap-2">
 
     {/* QR Code */}
-    <div className="bg-white rounded-md p-[2px] flex items-center justify-center shadow-md w-16 h-16 border border-gray-200">
+    <div className="bg-white rounded-md p-[2px] flex items-center justify-center shadow-md w-16 h-16 border border-gray-200 mt-3">
+
     <QRCodeCanvas
       value={`BEGIN:VCARD
 VERSION:3.0
@@ -644,7 +651,7 @@ END:VCARD`}
   </div>
 
   {/* === Valid Thru === */}
-  <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 text-center">
+  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-center">
     <p className="text-[8px] sm:text-[9px] text-gray-400 font-semibold uppercase leading-tight">
       Valid Thru
     </p>
