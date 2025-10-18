@@ -251,7 +251,7 @@ const signature="signature";
 
   {/* === card 1 === */}
   
-  {/* === Each Card Wrapper === */}
+  {/* === Card Wrapper === */}
 <div className="flex flex-col w-full rounded-3xl shadow bg-transparent p-0 hover:shadow-lg transition-shadow duration-200">
 
 {/* === The Main Card === */}
@@ -403,12 +403,19 @@ END:VCARD`}
 </div>
  
  {/* === card 2 === */}
- {/* === Each Card Wrapper === */}
+ {/* ===  Card Wrapper === */}
  <div className="flex flex-col w-full rounded-3xl shadow bg-transparent p-0 hover:shadow-lg transition-shadow duration-200">
 
 {/* === The Main Card === */}
-<div className="relative flex flex-col sm:flex-row items-stretch justify-between p-3 sm:p-4 rounded-xl shadow-lg bg-[#0d99ff] text-white transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl overflow-hidden min-h-[160px] max-h-[220px] w-full">
-  
+<div
+  className="relative flex flex-col sm:flex-row items-stretch justify-between 
+  p-3 sm:p-4 rounded-xl shadow-lg 
+  bg-[linear-gradient(to_right,white_40%,#A8A9AD_100%)] 
+  text-gray-900 
+  transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl 
+  overflow-hidden min-h-[160px] max-h-[220px] w-full"
+>
+
   {/* === Left Column: Logo + Profile === */}
   <div className="flex flex-col justify-between h-full flex-shrink-0 space-y-1 sm:space-y-2">
     {/* Logo */}
@@ -422,7 +429,7 @@ END:VCARD`}
         />        
         <h1 className="text-[12px] sm:text-[13px] font-bold tracking-wide">ONTAP</h1>
       </div>
-      <p className="text-[6.5px] sm:text-[7px] text-gray-300 tracking-widest">GLOBAL WORKSPACE</p>
+      <p className="text-[6.5px] sm:text-[7px] text-gray-700 tracking-widest font-semibold">GLOBAL WORKSPACE</p>
     </div>
 
     {/* Profile Image */}
@@ -441,8 +448,8 @@ END:VCARD`}
     {signature}
   </h3>
   <div className="flex flex-col leading-tight min-w-0">
-    <p className="text-[8px] sm:text-[9px] text-[#0057ce] uppercase">Staff ID</p>
-    <p className="text-[9px] sm:text-[10px] font-semibold text-white break-all">{staffId}</p>
+    <p className="text-[8px] sm:text-[9px] text-gray-700 uppercase">Staff ID</p>
+    <p className="text-[9px] sm:text-[10px] font-bold text-gray-700 break-all">{staffId}</p>
   </div>
 </div>
 
@@ -451,13 +458,13 @@ END:VCARD`}
   {/* === Middle Section: Staff Details === */}
   <div className="flex flex-col justify-center flex-grow h-full px-1 sm:px-2 mt-2 sm:mt-0 overflow-hidden">
     <div className="min-w-0">
-      <h2 className="text-[13px] sm:text-[14px] font-bold leading-tight truncate">{name}</h2>
-      <p className="text-[10px] sm:text-[11px] text-gray-300 truncate">{role}</p>
+      <h2 className="text-[8px] sm:text-[12px] font-bold leading-tight truncate uppercase">{name}</h2>
+      <p className="text-[8px] sm:text-[10px] text-gray-800 truncate uppercase">{role}</p>
     </div>
 
     <div className="min-w-0 mt-1.5 sm:mt-2">
-      <p className="text-[9px] sm:text-[10px] text-[#0057ce] uppercase">Department</p>
-      <p className="text-[10px] sm:text-[11px] font-semibold text-white truncate">{department}</p>
+      <p className="text-[9px] sm:text-[10px] text-gray-800 uppercase">Department</p>
+      <p className="text-[10px] sm:text-[11px] font-bold text-gray-700 truncate uppercase">{department}</p>
     </div>
   </div>
 
@@ -485,31 +492,26 @@ END:VCARD`}
     </div>
 
     {/* NFC Icons */}
-<div className="flex sm:flex-col items-center justify-center gap-2 sm:gap-1 mt-2 sm:mt-3">
+<div className="flex sm:flex-col items-center justify-center gap-2 sm:gap-1 mt-1">
 
-    <div className="flex items-center justify-center w-6 h-6 rounded-full border border-blue-400 bg-[#0d99ff] hover:bg-blue-900 transition">
+
+    <div className="flex items-center justify-center w-6 h-6 rounded-full border border-[#c8c9ce] bg-[#656973] hover:bg-gray-900 transition">
     <img
-          src="/images/nfc card5.png"
+          src="/images/nfc_gray.png"
           alt="NFC"
-          className="w-4 h-4 object-contain animate-pulse"
+          className="w-6 h-6 object-contain animate-pulse"
         />
       </div>
-      <div className="flex items-center justify-center w-6 h-6 rounded-full border border-blue-400 bg-[#0d99ff] hover:bg-blue-900 transition">
-      <img
-          src="/images/nfc card5.png"
-          alt="NFC"
-          className="w-4 h-4 object-contain animate-pulse"
-        />
-      </div> 
+     
     </div>
   </div>
 
   {/* === Valid Thru === */}
   <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-center">
-    <p className="text-[8px] sm:text-[9px] text-[#0057ce] font-semibold uppercase leading-tight">
+    <p className="text-[8px] sm:text-[9px] text-gray-800 font-semibold uppercase leading-tight">
       Valid Thru
     </p>
-    <p className="text-[8px] sm:text-[9px] font-semibold text-white leading-tight">
+    <p className="text-[8px] sm:text-[9px] font-bold text-gray-700 leading-tight">
       {validThru}
     </p>
   </div>
@@ -557,7 +559,7 @@ END:VCARD`}
 </div>
 
 {/* === card 3 === */}
-{/* === Each Card Wrapper === */}
+{/* === Card Wrapper === */}
 <div className="flex flex-col w-full rounded-3xl shadow bg-transparent p-0 hover:shadow-lg transition-shadow duration-200">
 
 {/* === The Main Card === */}
@@ -710,7 +712,7 @@ END:VCARD`}
 
 
 {/* === card 4 === */}
-{/* === Each Card Wrapper === */}
+{/* ===  Card Wrapper === */}
 <div className="flex flex-col w-full rounded-3xl shadow bg-transparent p-0 hover:shadow-lg transition-shadow duration-200">
 
 {/* === The Main Card === */}
