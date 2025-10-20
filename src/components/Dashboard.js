@@ -80,6 +80,8 @@ useEffect(() => {
 }, []);
 
   return (
+
+   
     <div className="flex w-full h-screen overflow-hidden">
       {/* Fixed Sidebar */}
       <div className="flex flex-col w-[272px] h-full border-r border-slate-100 bg-white shrink-0">

@@ -725,10 +725,10 @@ END:VCARD`}
 </div>
 </div>
   </div>
+  </div>
             </div>
             
           </div>
-        </div>
   );
 };
 
