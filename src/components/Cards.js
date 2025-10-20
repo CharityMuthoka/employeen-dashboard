@@ -459,8 +459,8 @@ END:VCARD`}
   {/* === Middle Section: Staff Details === */}
   <div className="flex flex-col justify-center flex-grow h-full px-1 sm:px-2 mt-2 sm:mt-0 overflow-hidden">
     <div className="min-w-0">
-      <h2 className="text-[8px] sm:text-[12px] font-bold leading-tight truncate uppercase">{name}</h2>
-      <p className="text-[8px] sm:text-[10px] text-gray-800 truncate uppercase">{role}</p>
+      <h2 className="text-[8px] sm:text-[9px] font-bold leading-tight truncate uppercase">{name}</h2>
+      <p className="text-[9px] sm:text-[7px] text-gray-800 truncate uppercase">{role}</p>
     </div>
 
     <div className="min-w-0 mt-1.5 sm:mt-2">
@@ -473,7 +473,8 @@ END:VCARD`}
   <div className="flex flex-row sm:flex-col items-center justify-between sm:justify-around h-full mt-6 sm:mt-4 relative gap-2 sm:gap-0">
  
     {/* QR Code */}
-    <div className="bg-white rounded-md p-[2px] flex items-center justify-center shadow-md w-16 h-16 border border-gray-200 mt-3">
+    <div className="border border-gray-800 rounded-xl p-3 flex items-center justify-center shadow-inner">
+    <div className="bg-white rounded-md p-[2px] flex items-center justify-center shadow-md w-16 h-16 border border-gray-200 ">
 
       <QRCodeCanvas
         value={`BEGIN:VCARD
@@ -491,10 +492,10 @@ END:VCARD`}
         level="H"
       />
     </div>
+    </div>
 
     {/* NFC Icons */}
 <div className="flex sm:flex-col items-center justify-center gap-2 sm:gap-1 mt-1">
-
 
     <div className="flex items-center justify-center w-6 h-6 rounded-full border border-[#c8c9ce] bg-[#656973] hover:bg-gray-900 transition">
     <img
@@ -562,14 +563,14 @@ END:VCARD`}
 
 
 
-{/* === card 4 === */}
+{/* === card 3 === */}
 {/* ===  Card Wrapper === */}
 <div className="flex flex-col w-full rounded-3xl shadow bg-transparent p-0 hover:shadow-lg transition-shadow duration-200">
 
 {/* === The Main Card === */}
 <div className="relative flex flex-col sm:flex-row items-stretch justify-between p-3 sm:p-4 rounded-xl shadow-lg bg-[#0B1E35] text-white transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl overflow-hidden min-h-[120px] max-h-[180px] w-full">
   
-  {/* === Left Column: Logo + Profile === */}
+  {/* === Left Column: Logo and Profile === */}
   <div className="flex flex-col justify-between h-full flex-shrink-0 space-y-1 sm:space-y-2">
     {/* Logo */}
     <div className="flex flex-col items-start -mt-1 sm:-mt-2">
@@ -616,7 +617,7 @@ END:VCARD`}
   </div>
 </div>
 
-  {/* === Right Section: QR + NFC + Menu === */}
+  {/* === Right Section: QR , NFC and Menu === */}
    
   <div className="flex flex-row sm:flex-col items-center justify-between sm:justify-around h-full mt-5 sm:mt-4 relative gap-2 sm:gap-2">
     {/* NFC Icons */}
@@ -679,7 +680,7 @@ END:VCARD`}
     </div>
   </div>
 
-  {/* Expiry + Actions */}
+  {/* Expiry and Actions */}
   <div className="flex flex-col justify-start items-start gap-4 w-full">
     <div className="flex flex-row justify-start items-center gap-2">
       <img width="16.3" height="16.3" src="/images/expiry.png" alt="Expiry icon" />
