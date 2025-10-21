@@ -1,7 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 import { QRCodeCanvas } from 'qrcode.react';
 
 const Cards = ({ setActivePage, activePage }) => {
+  const [activeTab, setActiveTab] = useState('idcards');
+  
   const menuItems = [
     { id: "dashboard", label: "Dashboard", icon: "/images/dashboard.png", whiteIcon: "/images/whitedashboard.png" },
     { id: "task", label: "Task", icon: "/images/task.png", whiteIcon: "/images/whitetask.png" },
@@ -207,44 +209,37 @@ const signature="signature";
             </div>
           </div>
 
-          {/* Tabs */}
-          <div className="flex flex-row justify-center items-center rounded-lg border border-slate-100 h-10 bg-slate-50 overflow-hidden">
-            <div className="flex flex-row justify-center items-center h-10 bg-white min-w-[50%] cursor-pointer border-r border-slate-100">
-              <div className="flex flex-row justify-center items-center gap-1">
-                <div className="flex justify-center items-center h-5">
-                  <img
-                    width="16.6px"
-                    height="13.1px"
-                    src="/images/id.png"
-                    alt="ID Card icon"
-                  />
-                </div>
-                <div className="text-xs text-neutral-900 font-semibold tracking-wide">
-                  ID Cards
+          {/*tabs switcher section */}
+<div className="mt-10">
+            <div className="flex rounded-lg border border-slate-100 bg-slate-50 overflow-hidden">
+              {/* ID Cards Tab */}
+              <div
+              className={`flex items-center justify-center h-10 w-1/2 ${
+                activeTab === 'id cards' ? 'bg-white' : '#c7d6db'
+              }`}
+              onClick={() => setActiveTab('id cards')}
+              >
+                <div className={`text-sm text-neutral-900 ${activeTab === 'id cards' ? 'font-semibold' : 'font-medium'}`}>
+                ID Cards
                 </div>
               </div>
-            </div>
-            <div className="flex flex-row justify-center items-center h-10 min-w-[50%] cursor-pointer hover:bg-gray-50 transition-colors">
-              <div className="flex flex-row justify-center items-center gap-1">
-                <div className="flex justify-center items-center h-5">
-                  <img
-                    width="16.6px"
-                    height="13.1px"
-                    src="/images/business.png"
-                    alt="Business Card icon"
-                  />
-                </div>
-                <div className="text-xs text-neutral-900 font-semibold tracking-wide">
-                  Business Cards
+              {/* Business cards Tab */}
+              <div
+              className={`flex items-center justify-center h-10 w-1/2 ${
+                activeTab === 'business cards' ? 'bg-white' : '#c7d6db'
+              }`}
+              onClick={() => setActiveTab('business cards')}
+              >
+                <div className={`text-sm text-neutral-900 ${activeTab === 'business cards' ? 'font-semibold' : 'font-medium'}`}>
+                  business cards
                 </div>
               </div>
             </div>
           </div>
 
+  {activeTab === 'id cards' && (
+    <>
 
-
-
- 
 {/* two grid cards scetion */}
   {/* === Card Section Grid === */}
 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -258,21 +253,27 @@ const signature="signature";
 {/* === The Main Card === */}
 <div className="relative flex flex-col sm:flex-row items-stretch justify-between p-3 sm:p-4 rounded-xl shadow-lg bg-[#0B1E35] text-white transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl overflow-hidden min-h-[160px] max-h-[220px] w-full">
   
-  {/* === Left Column: Logo + Profile === */}
+  {/* === Left Column: Logo and Profile === */}
   <div className="flex flex-col justify-between h-full flex-shrink-0 space-y-1 sm:space-y-2">
-    {/* Logo */}
-    <div className="flex flex-col items-start -mt-1 sm:-mt-2">
+    {/* === Logo Section  === */}
+<div className="flex flex-col items-start -mt-1 sm:-mt-2 w-[90px] sm:w-[100px] overflow-hidden">
 
-      <div className="flex items-center space-x-1">
-        <img 
-          src="images/logo.png" 
-          alt="ONTAP logo" 
-          className="w-3.5 h-3.5 object-contain sm:w-4 sm:h-4"
-        />        
-        <h1 className="text-[12px] sm:text-[13px] font-bold tracking-wide">ONTAP</h1>
-      </div>
-      <p className="text-[6.5px] sm:text-[7px] text-gray-300 tracking-widest">GLOBAL WORKSPACE</p>
-    </div>
+<div className="flex items-center space-x-1 truncate">
+  <img 
+    src="images/logo.png" 
+    alt={`${org} logo`} 
+    className="w-3.5 h-3.5 object-contain sm:w-4 sm:h-4"
+  />        
+  <h1 className="text-[12px] sm:text-[13px] font-bold tracking-wide leading-tight truncate max-w-[70px] sm:max-w-[80px]">
+    {org.split(" ")[0].toUpperCase()}
+  </h1>
+</div>
+
+<p className="text-[6.5px] sm:text-[7px] text-gray-300 tracking-widest uppercase leading-tight truncate max-w-[90px] sm:max-w-[100px]">
+  {org.split(" ").slice(1).join(" ")}
+</p>
+</div>
+
 
     {/* Profile Image */}
     <div className="w-[60px] h-[60px] sm:w-[80px] sm:h-[80px] md:w-[90px] md:h-[90px] rounded-lg overflow-hidden border border-gray-500">
@@ -309,7 +310,7 @@ const signature="signature";
   </div>
 </div>
 
-  {/* === Right Section: QR + NFC + Menu === */}
+  {/* === Right Section: QR , NFC , Menu === */}
   <div className="flex flex-row sm:flex-col items-center justify-between sm:justify-around h-full mt-6 sm:mt-4 relative gap-2 sm:gap-0">
  
     {/* QR Code */}
@@ -322,7 +323,7 @@ FN:${name}
 TITLE:${role}
 ORG:${org}
 TEL:${phoneNumber}
-EMAIL:${name.split(" ")[0].toLowerCase()}@ontapke.com
+EMAIL:${name.split(" ")[0].toLowerCase()}@${org.split(" ")[0].toLowerCase()}.com
 URL:https://ontapke.com
 END:VCARD`}
         size={60}
@@ -420,18 +421,23 @@ END:VCARD`}
   {/* === Left Column: Logo and Profile === */}
   <div className="flex flex-col justify-between h-full flex-shrink-0 space-y-1 sm:space-y-2">
     {/* Logo */}
-<div className="flex flex-col items-start -mt-1 sm:-mt-2">
+<div className="flex flex-col items-start -mt-1 sm:-mt-2 w-[90px] sm:w-[100px] overflow-hidden">
 
-      <div className="flex items-center space-x-1">
-        <img 
-          src="images/logo.png" 
-          alt="ONTAP logo" 
-          className="w-3.5 h-3.5 object-contain sm:w-4 sm:h-4"
-        />        
-        <h1 className="text-[12px] sm:text-[13px] font-bold tracking-wide">ONTAP</h1>
-      </div>
-      <p className="text-[6.5px] sm:text-[7px] text-gray-700 tracking-widest font-semibold">GLOBAL WORKSPACE</p>
-    </div>
+<div className="flex items-center space-x-1 truncate">
+  <img 
+    src="images/logo.png" 
+    alt={`${org} logo`} 
+    className="w-3.5 h-3.5 object-contain sm:w-4 sm:h-4"
+  />        
+  <h1 className="text-[12px] sm:text-[13px] font-bold tracking-wide leading-tight truncate max-w-[70px] sm:max-w-[80px]">
+    {org.split(" ")[0].toUpperCase()}
+  </h1>
+</div>
+
+<p className="text-[6.5px] sm:text-[7px] text-gray-700 tracking-widest uppercase leading-tight truncate max-w-[90px] sm:max-w-[100px]">
+  {org.split(" ").slice(1).join(" ")}
+</p>
+</div>
 
     {/* Profile Image */}
     <div className="w-[60px] h-[60px] sm:w-[80px] sm:h-[80px] md:w-[90px] md:h-[90px] rounded-lg overflow-hidden border border-gray-500">
@@ -473,7 +479,7 @@ END:VCARD`}
   <div className="flex flex-row sm:flex-col items-center justify-between sm:justify-around h-full mt-6 sm:mt-4 relative gap-2 sm:gap-0">
  
     {/* QR Code */}
-    <div className="border border-gray-800 rounded-xl p-3 flex items-center justify-center shadow-inner">
+    <div className="border border-gray-800 rounded-xl p-2 flex items-center justify-center shadow-inner">
     <div className="bg-white rounded-md p-[2px] flex items-center justify-center shadow-md w-16 h-16 border border-gray-200 ">
 
       <QRCodeCanvas
@@ -483,7 +489,7 @@ FN:${name}
 TITLE:${role}
 ORG:${org}
 TEL:${phoneNumber}
-EMAIL:${name.split(" ")[0].toLowerCase()}@ontapke.com
+EMAIL:${name.split(" ")[0].toLowerCase()}@${org.split(" ")[0].toLowerCase()}.com
 URL:https://ontapke.com
 END:VCARD`}
         size={60}
@@ -574,21 +580,27 @@ bg-gradient-to-tr from-[#001F3F] via-[#102A70] to-[#A020F0]
 text-white transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl 
 overflow-hidden min-h-[120px] max-h-[180px] w-full">
 
-  {/* === Left Column: Logo + Profile === */}
+  {/* === Left Column: Logo , Profile === */}
   <div className="flex flex-col justify-between h-full flex-shrink-0 space-y-1 sm:space-y-2">
     {/* Logo */}
-    <div className="flex flex-col items-start -mt-1 sm:-mt-2">
+    
+<div className="flex flex-col items-start -mt-1 sm:-mt-2 w-[90px] sm:w-[100px] overflow-hidden">
 
-      <div className="flex items-center space-x-1">
-        <img 
-          src="images/logo.png" 
-          alt="ONTAP logo" 
-          className="w-3.5 h-3.5 object-contain sm:w-4 sm:h-4"
-        />        
-        <h1 className="text-[12px] sm:text-[13px] font-bold tracking-wide">ONTAP</h1>
-      </div>
-      <p className="text-[6.5px] sm:text-[7px] text-gray-300 tracking-widest">GLOBAL WORKSPACE</p>
-    </div>
+<div className="flex items-center space-x-1 truncate">
+  <img 
+    src="images/logo.png" 
+    alt={`${org} logo`} 
+    className="w-3.5 h-3.5 object-contain sm:w-4 sm:h-4"
+  />        
+  <h1 className="text-[12px] sm:text-[13px] font-bold tracking-wide leading-tight truncate max-w-[70px] sm:max-w-[80px]">
+    {org.split(" ")[0].toUpperCase()}
+  </h1>
+</div>
+
+<p className="text-[6.5px] sm:text-[7px] text-white tracking-widest uppercase leading-tight truncate max-w-[90px] sm:max-w-[100px]">
+  {org.split(" ").slice(1).join(" ")}
+</p>
+</div>
 
     {/* Profile Image */}
     <div className="p-[3px] rounded-full border border-[#3EA6FF] shadow-[0_0_15px_3px_rgba(62,166,255,0.6)] flex items-center justify-center transition-transform duration-300 hover:shadow-[0_0_25px_5px_rgba(62,166,255,0.8)]">
@@ -627,7 +639,7 @@ overflow-hidden min-h-[120px] max-h-[180px] w-full">
   </div>
 </div>
 
-  {/* === Right Section: QR + NFC + Menu === */}
+  {/* === Right Section: QR , NFC and Menu === */}
   <div className="flex flex-row sm:flex-col items-center justify-between sm:justify-around h-full mt-5 sm:mt-4 relative gap-2 sm:gap-2">
     {/* NFC Icons */}
     <div className="flex sm:flex-col items-center justify-center gap-2 sm:gap-1">
@@ -641,7 +653,7 @@ FN:${name}
 TITLE:${role}
 ORG:${org}
 TEL:${phoneNumber}
-EMAIL:${name.split(" ")[0].toLowerCase()}@ontapke.com
+EMAIL:${name.split(" ")[0].toLowerCase()}@${org.split(" ")[0].toLowerCase()}.com
 URL:https://ontapke.com
 END:VCARD`}
         size={60}
@@ -674,7 +686,7 @@ END:VCARD`}
   </div>
 
   {/* === Valid Thru === */}
-  <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-center">
+  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-center">
     <p className="text-[8px] sm:text-[9px] text-gray-400 font-semibold uppercase leading-tight">
       Valid Thru
     </p>
@@ -725,10 +737,22 @@ END:VCARD`}
 </div>
 </div>
   </div>
+  </>
+)}
+
+{activeTab === 'business cards' && (
+    <>
+    <div className="text-sm font-semibold text-center">business cards coming soon</div>
+    </>
+    )}
   </div>
+
+  
+ 
             </div>
             
           </div>
+        
   );
 };
 

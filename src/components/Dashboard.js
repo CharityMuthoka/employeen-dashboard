@@ -10,7 +10,7 @@ import FlippableCard from "./FlippableCard.js";
   
 
 const Dashboard = ({ setActivePage, activePage }) => {
-  const [activeTab, setActiveTab] = useState('websiteActivity');
+  const [activeTab, setActiveTab] = useState('idcards');
   const [isLeaveModalOpen, setIsLeaveModalOpen] = useState(false);
   const [isLogTaskModalOpen, setIsLogTaskModalOpen] = useState(false);
 
@@ -224,7 +224,7 @@ useEffect(() => {
               </div>
             </div>
 
-            {/* Notifications + Avatar */}
+            {/* Notifications and Avatar */}
             <div className="flex items-center gap-3 w-20">
               <div className="w-6 h-4">
                 <img
@@ -281,33 +281,31 @@ useEffect(() => {
 
 
  
- 
- 
- 
-
-
- 
-
-
-{/* === card 3 === */}
 {/* === Card Section === */}
+{/* === card 1 === */}
 <div className="relative flex flex-col sm:flex-row items-stretch justify-between p-3 sm:p-4 rounded-xl shadow-lg bg-[#0B1E35] text-white transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl overflow-hidden min-h-[160px] max-h-[220px] w-full">
 
-  {/* === Left Column: Logo + Profile === */}
+  {/* === Left Column: Logo and Profile === */}
   <div className="flex flex-col justify-between h-full flex-shrink-0 space-y-1 sm:space-y-2">
     
     {/* Logo */}
-    <div className="flex flex-col items-start -mt-1 sm:-mt-2">
-      <div className="flex items-center space-x-1">
-        <img 
-          src="images/logo.png" 
-          alt="ONTAP logo" 
-          className="w-3.5 h-3.5 object-contain sm:w-4 sm:h-4"
-        />        
-        <h1 className="text-[12px] sm:text-[13px] font-bold tracking-wide">ONTAP</h1>
-      </div>
-      <p className="text-[6.5px] sm:text-[7px] text-gray-300 tracking-widest">GLOBAL WORKSPACE</p>
-    </div>
+    <div className="flex flex-col items-start -mt-1 sm:-mt-2 w-[90px] sm:w-[100px] overflow-hidden">
+
+<div className="flex items-center space-x-1 truncate">
+  <img 
+    src="images/logo.png" 
+    alt={`${org} logo`} 
+    className="w-3.5 h-3.5 object-contain sm:w-4 sm:h-4"
+  />        
+  <h1 className="text-[12px] sm:text-[13px] font-bold tracking-wide leading-tight truncate max-w-[70px] sm:max-w-[80px]">
+    {org.split(" ")[0].toUpperCase()}
+  </h1>
+</div>
+
+<p className="text-[6.5px] sm:text-[7px] text-white tracking-widest uppercase leading-tight truncate max-w-[90px] sm:max-w-[100px]">
+  {org.split(" ").slice(1).join(" ")}
+</p>
+</div>
 
     {/* Profile Image */}
     <div className="w-[60px] h-[60px] sm:w-[80px] sm:h-[80px] md:w-[90px] md:h-[90px] rounded-lg overflow-hidden border border-gray-500">
@@ -344,7 +342,7 @@ useEffect(() => {
   </div>
 </div>
 
-  {/* === Right Section: QR + NFC + Menu === */}
+  {/* === Right Section: QR , NFC and Menu === */}
   <div className="flex flex-row sm:flex-col items-center justify-between sm:justify-around h-full mt-5 sm:mt-4 relative gap-2 sm:gap-2">
 
     {/* QR Code */}
@@ -432,6 +430,7 @@ END:VCARD`}
 </div>
 
 
+
 {/* === }
 <div>
 <FlippableCard
@@ -449,13 +448,13 @@ END:VCARD`}
 
 ===*/}
 
+{activeTab === 'business cards' && (
+            <>
+            <div className="text-sm font-semibold items-center">business cards coming soon ...</div>
+            </>
+)}
 
-
-
-
-
-
-            {/* Action Buttons */}
+      {/* Action Buttons */}
             <div className="flex flex-col gap-2 justify-center h-[120px]">
               <button 
           onClick={() => setIsLeaveModalOpen(true)}
@@ -754,7 +753,6 @@ END:VCARD`}
           </div>
         </div>
       </div>
-
       {/* Leave Modal */}
       <LeaveModal 
         isOpen={isLeaveModalOpen}

@@ -4,12 +4,10 @@ import logo from '../assets/ontap.png';
 import dashboardIcon from '../assets/dashboard_2.png';
 import taskIcon from '../assets/task.png';
 import leaveIcon from '../assets/leave_attendance.png';
-import paySlipsIcon from '../assets/invoice.png';
 import trainingsIcon from '../assets/graduate.png';
 import cardsIcon from '../assets/cardss.png';
 import profileIcon from '../assets/user_1.png';
 import announcementsIcon from '../assets/announcement.png';
-import helpIcon from '../assets/info.png';
 
 import logoutImg from '../assets/logout.png';
 
@@ -18,12 +16,10 @@ const menuItems = [
   { name: 'Dashboard', icon: dashboardIcon, active: true },
   { name: 'Task', icon: taskIcon },
   { name: 'Leave & Attendance', icon: leaveIcon },
-  { name: 'Pay Slips', icon: paySlipsIcon },
   { name: 'Trainings', icon: trainingsIcon },
   { name: 'My Cards', icon: cardsIcon },
   { name: 'My Profile', icon: profileIcon },
   { name: 'Announcements', icon: announcementsIcon },
-  { name: 'Help & Support', icon: helpIcon },
 ];
 
 export default function Sidebar() {
