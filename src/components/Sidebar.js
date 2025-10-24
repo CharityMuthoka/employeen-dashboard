@@ -9,7 +9,6 @@ import cardsIcon from '../assets/cardss.png';
 import profileIcon from '../assets/user_1.png';
 import announcementsIcon from '../assets/announcement.png';
 
-import logoutImg from '../assets/logout.png';
 
 
 const menuItems = [

@@ -1,19 +1,18 @@
 import React, {useState} from "react";
 import { QRCodeCanvas } from 'qrcode.react';
+import FlippableCard from "./FlippableCard.js";
+
 
 const Cards = ({ setActivePage, activePage }) => {
-  const [activeTab, setActiveTab] = useState('idcards');
+  const [activeTab, setActiveTab] = useState('id cards');
   
   const menuItems = [
     { id: "dashboard", label: "Dashboard", icon: "/images/dashboard.png", whiteIcon: "/images/whitedashboard.png" },
     { id: "task", label: "Task", icon: "/images/task.png", whiteIcon: "/images/whitetask.png" },
     { id: "leave", label: "Leave & Attendance", icon: "/images/leave.png", whiteIcon: "/images/whiteleave.png" },
-    { id: "payslips", label: "Pay Slips", icon: "/images/payslip.png", whiteIcon: "/images/whitepayslip.png" },
     { id: "trainings", label: "Trainings", icon: "/images/training.png", whiteIcon: "/images/whitetraining.png" },
     { id: "cards", label: "My Cards", icon: "/images/cards.png", whiteIcon: "/images/whitecards.png" },
-    { id: "profile", label: "My Profile", icon: "/images/profile.png", whiteIcon: "/images/whiteprofile.png" },
     { id: "announcements", label: "Announcements", icon: "/images/announcements.png", whiteIcon: "/images/whiteannouncements.png" },
-    { id: "support", label: "Help & Support", icon: "/images/help.png", whiteIcon: "/images/whitehelp.png" },
   ];
 
   //dummy staff data
@@ -24,9 +23,9 @@ const staffId="EMP4526";
 const validThru = "05/24/2026";
 const profileUrl = "/images/avatar_5.png";
 const org="Ontap Global Workspace";
-const workspace = "Global Workspace";
 const phoneNumber="0734253627"
 const signature="signature";
+const websiteUrl="https://ontapke.com";
 
 
   return (
@@ -209,11 +208,11 @@ const signature="signature";
             </div>
           </div>
 
-          {/*tabs switcher section */}
+    {/*tabs switcher section */}
 <div className="mt-10">
-            <div className="flex rounded-lg border border-slate-100 bg-slate-50 overflow-hidden">
-              {/* ID Cards Tab */}
-              <div
+      <div className="flex rounded-lg border border-slate-100 bg-slate-50 overflow-hidden">
+          {/* ID Cards Tab */}
+            <div
               className={`flex items-center justify-center h-10 w-1/2 ${
                 activeTab === 'id cards' ? 'bg-white' : '#c7d6db'
               }`}
@@ -310,7 +309,7 @@ const signature="signature";
   </div>
 </div>
 
-  {/* === Right Section: QR , NFC , Menu === */}
+  {/* === Right Section: QR , NFC  === */}
   <div className="flex flex-row sm:flex-col items-center justify-between sm:justify-around h-full mt-6 sm:mt-4 relative gap-2 sm:gap-0">
  
     {/* QR Code */}
@@ -324,7 +323,7 @@ TITLE:${role}
 ORG:${org}
 TEL:${phoneNumber}
 EMAIL:${name.split(" ")[0].toLowerCase()}@${org.split(" ")[0].toLowerCase()}.com
-URL:https://ontapke.com
+URL:${websiteUrl}
 END:VCARD`}
         size={60}
         bgColor="#ffffff"
@@ -475,7 +474,7 @@ END:VCARD`}
     </div>
   </div>
 
-  {/* === Right Section: QR , NFC and Menu === */}
+  {/* === Right Section: QR , NFC === */}
   <div className="flex flex-row sm:flex-col items-center justify-between sm:justify-around h-full mt-6 sm:mt-4 relative gap-2 sm:gap-0">
  
     {/* QR Code */}
@@ -490,7 +489,7 @@ TITLE:${role}
 ORG:${org}
 TEL:${phoneNumber}
 EMAIL:${name.split(" ")[0].toLowerCase()}@${org.split(" ")[0].toLowerCase()}.com
-URL:https://ontapke.com
+URL:${websiteUrl}
 END:VCARD`}
         size={60}
         bgColor="#ffffff"
@@ -639,7 +638,7 @@ overflow-hidden min-h-[120px] max-h-[180px] w-full">
   </div>
 </div>
 
-  {/* === Right Section: QR , NFC and Menu === */}
+  {/* === Right Section: QR , NFC  === */}
   <div className="flex flex-row sm:flex-col items-center justify-between sm:justify-around h-full mt-5 sm:mt-4 relative gap-2 sm:gap-2">
     {/* NFC Icons */}
     <div className="flex sm:flex-col items-center justify-center gap-2 sm:gap-1">
@@ -654,7 +653,7 @@ TITLE:${role}
 ORG:${org}
 TEL:${phoneNumber}
 EMAIL:${name.split(" ")[0].toLowerCase()}@${org.split(" ")[0].toLowerCase()}.com
-URL:https://ontapke.com
+URL:${websiteUrl}
 END:VCARD`}
         size={60}
         bgColor="#ffffff"
@@ -736,9 +735,34 @@ END:VCARD`}
   </div>
 </div>
 </div>
+
+{/* ===== flippable card section ==== */}
+<FlippableCard
+  name={name}
+  role={role}
+  department={department}
+  staffId={staffId}
+  validThru={validThru}
+  profileUrl={profileUrl}
+  org={org}
+  phoneNumber={phoneNumber}
+  signature={signature}
+  websiteUrl={websiteUrl}
+/>
+
+
+
+
   </div>
+
+ 
+  <div>
+
+</div>
   </>
 )}
+
+
 
 {activeTab === 'business cards' && (
     <>

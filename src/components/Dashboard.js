@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect} from "react";
 import LeaveModal from "./LeaveModal.js";
 import LogTaskModal from "./LogTaskModal.js";
 import { QRCodeCanvas } from 'qrcode.react';
-import FlippableCard from "./FlippableCard.js";
 
 
 
@@ -20,12 +19,9 @@ const Dashboard = ({ setActivePage, activePage }) => {
     { id: "dashboard", label: "Dashboard", icon: "/images/dashboard.png", whiteIcon: "/images/whitedashboard.png" },
     { id: "task", label: "Task", icon: "/images/task.png", whiteIcon: "/images/whitetask.png" },
     { id: "leave", label: "Leave & Attendance", icon: "/images/leave.png", whiteIcon: "/images/whiteleave.png" },
-    { id: "payslips", label: "Pay Slips", icon: "/images/payslip.png", whiteIcon: "/images/whitepayslip.png" },
     { id: "trainings", label: "Trainings", icon: "/images/training.png", whiteIcon: "/images/whitetraining.png" },
     { id: "cards", label: "My Cards", icon: "/images/cards.png", whiteIcon: "/images/whitecards.png" },
-    { id: "profile", label: "My Profile", icon: "/images/profile.png", whiteIcon: "/images/whiteprofile.png" },
     { id: "announcements", label: "Announcements", icon: "/images/announcements.png", whiteIcon: "/images/whiteannouncements.png" },
-    { id: "support", label: "Help & Support", icon: "/images/help.png", whiteIcon: "/images/whitehelp.png" },
   ];
 
   const handleLeaveSubmit = (formData) => {
@@ -50,19 +46,7 @@ const profileUrl = "/images/avatar_5.png";
 const org="Ontap Global Workspace";
 const phoneNumber="0734253627";
 const signature="signature";
-
-
-<FlippableCard
-  name={name}
-  role={role}
-  department={department}
-  staffId={staffId}
-  validThru={validThru}
-  profileUrl={profileUrl}
-  org={org}
-  phoneNumber={phoneNumber}
-  signature={signature}
-/>
+const websiteUrl="https://ontapke.com";
 
 
 
@@ -356,7 +340,7 @@ TITLE:${role}
 ORG:${org}
 TEL:${phoneNumber}
 EMAIL:${name.split(" ")[0].toLowerCase()}@ontapke.com
-URL:https://ontapke.com
+URL:${websiteUrl}
 END:VCARD`}
       size={60}
       bgColor="#ffffff"
@@ -431,28 +415,7 @@ END:VCARD`}
 
 
 
-{/* === }
-<div>
-<FlippableCard
-  name={name}
-  role={role}
-  department={department}
-  staffId={staffId}
-  validThru={validThru}
-  profileUrl={profileUrl}
-  org={org}
-  phoneNumber={phoneNumber}
-  signature={signature}
-/>
-</div>
 
-===*/}
-
-{activeTab === 'business cards' && (
-            <>
-            <div className="text-sm font-semibold items-center">business cards coming soon ...</div>
-            </>
-)}
 
       {/* Action Buttons */}
             <div className="flex flex-col gap-2 justify-center h-[120px]">
