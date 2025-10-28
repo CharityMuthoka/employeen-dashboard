@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { QRCodeCanvas } from "qrcode.react";
+import Barcode from "react-barcode";
+import logo from "../assets/ontap.png";
+import belforlogo from "../assets/belfor_logo.png";
 
 const FlippableCard = ({
   name,
@@ -11,10 +14,10 @@ const FlippableCard = ({
   org,
   phoneNumber,
   signature,
-  websiteUrl,
 }) => {
   const [flipped, setFlipped] = useState(false);
   const handleFlip = () => setFlipped((prev) => !prev);
+
 
   return (
     <div
@@ -42,8 +45,9 @@ const FlippableCard = ({
             <div className="relative flex flex-col sm:flex-row items-stretch justify-between p-3 sm:p-4 rounded-xl shadow-lg bg-[#0B1E35] text-white 
             transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl overflow-hidden min-h-[160px] max-h-[220px] w-full">
 
+
               {/* === Left Column: Logo and Profile === */}
-              <div className="flex flex-col justify-between h-full flex-shrink-0 space-y-1 sm:space-y-2">
+              <div className="flex flex-col z-10 justify-between h-full flex-shrink-0 space-y-1 sm:space-y-2">
                 {/* Logo Section */}
                 <div className="flex flex-col items-start -mt-1 sm:-mt-2 w-[90px] sm:w-[100px] overflow-hidden">
                   <div className="flex items-center space-x-1 truncate">
@@ -61,19 +65,59 @@ const FlippableCard = ({
                   </p>
                 </div>
 
-                {/* Profile Image */}
-                <div className="w-[60px] h-[60px] sm:w-[80px] sm:h-[80px] md:w-[90px] md:h-[90px] rounded-lg overflow-hidden border border-gray-500">
-                  <img
-                    src={profileUrl}
-                    alt={`${name} Profile`}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+  
 
-                {/* Signature & Staff ID */}
-                <div className="flex items-center justify-between mt-2 w-full space-x-2">
-                  <h3 className="font-semibold italic text-[9px] sm:text-[10px] truncate max-w-[80px] sm:max-w-[90px]">
-                    {signature}
+  {/* === Top-Right Metallic Circle Section === */}
+<div className="absolute top-0.5 right-3 w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden flex items-center justify-center shadow-md">
+<div
+  className="w-full h-full rounded-full flex items-center justify-center"
+  style={{
+    background: `
+      conic-gradient(
+        from 0deg,
+        #f2f2f2 0deg,
+        #cfcfcf 40deg,
+        #b8b8b8 90deg,
+        #e0e0e0 140deg,
+        #a0a0a0 200deg,
+        #d9d9d9 260deg,
+        #bfbfbf 320deg,
+        #f2f2f2 360deg
+      )
+    `,
+    boxShadow: `
+      inset 0 0 8px rgba(255,255,255,0.5),
+      inset 0 0 15px rgba(0,0,0,0.25),
+      0 0 6px rgba(0,0,0,0.15)
+    `,
+  }}
+>
+  <img
+    src="/images/logo.png"
+    alt="OnTap Logo"
+    className="w-8 h-8 sm:w-10 sm:h-10 object-contain mix-blend-multiply"
+  />
+</div>
+
+
+</div>
+
+
+
+
+    {/* Profile Image */}
+        <div className="w-[60px] h-[60px] sm:w-[80px] sm:h-[80px] md:w-[90px] md:h-[90px] rounded-lg overflow-hidden border border-gray-500">
+          <img
+              src={profileUrl}
+              alt={`${name} Profile`}
+             className="w-full h-full object-cover"
+          />
+        </div>
+
+          {/* Signature & Staff ID */}
+            <div className="flex items-center justify-between mt-2 w-full space-x-2">
+              <h3 className="font-semibold italic text-[9px] sm:text-[10px] truncate max-w-[80px] sm:max-w-[90px]">
+                {signature}
                   </h3>
                   <div className="flex flex-col leading-tight min-w-0">
                     <p className="text-[8px] sm:text-[9px] text-gray-400 uppercase">Staff ID</p>
@@ -85,35 +129,30 @@ const FlippableCard = ({
               {/* === Middle Section === */}
               <div className="flex flex-col justify-center flex-grow h-full px-1 sm:px-2 mt-6 sm:mt-8 overflow-hidden">
               <div className="min-w-0">
-                  <h2 className="text-[13px] sm:text-[14px] font-bold leading-tight truncate">{name}</h2>
-                  <p className="text-[10px] sm:text-[11px] text-gray-200 truncate">{role}</p>
+                  <h2 className="text-[13px] sm:text-[14px] font-bold uppercase leading-tight truncate">{name}</h2>
+                  <p className="text-[10px] sm:text-[11px] text-gray-200  uppercase truncate">{role}</p>
                 </div>
                 <div className="min-w-0 mt-2 sm:mt-2.5">
                   <p className="text-[9px] sm:text-[10px] text-gray-400 uppercase tracking-wide">Department</p>
-                  <p className="text-[11px] sm:text-[12px] font-semibold text-white truncate">{department}</p>
+                  <p className="text-[11px] sm:text-[12px] font-semibold uppercase text-white truncate">{department}</p>
                 </div>
               </div>
 
               {/* === Right Section - NFC icons === */}
-              <div className="flex sm:flex-col items-center justify-center gap-2 sm:gap-1">
-      <div className="flex items-center justify-center w-6 h-6 rounded-full border border-blue-400 bg-[#102A49] hover:bg-blue-900 transition">
+              <div className="flex sm:flex-col items-center justify-center gap-2 sm:gap-1 mt-8 ">
+      <div className="flex items-center justify-center w-6 h-6 rounded-full border border-blue-400 bg-[#102A49] hover:bg-blue-900 transition ">
+
         <img
           src="/images/nfc_card.png"
           alt="NFC"
-          className="w-4 h-4 object-contain animate-pulse"
+          className="w-6 h-6 object-contain animate-pulse"
         />
       </div>
-      <div className="relative flex items-center justify-center w-6 h-6 rounded-full border border-blue-400 bg-[#102A49] hover:bg-blue-900 transition">
-        <img
-          src="/images/nfc_card.png"
-          alt="NFC"
-          className="w-4 h-4 object-contain animate-pulse"
-        />
-      </div> 
+       
     </div>
 
               {/* Valid Thru */}
-              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-center">
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-[5%] text-center">
                 <p className="text-[8px] sm:text-[9px] text-gray-400 font-semibold uppercase leading-tight">
                   Valid Thru
                 </p>
@@ -121,6 +160,8 @@ const FlippableCard = ({
                   {validThru}
                 </p>
               </div>
+  
+    
             </div>
 
             {/* === Below the Card Section === */}
@@ -163,78 +204,61 @@ const FlippableCard = ({
           </div>
         </div>
 
-        {/* ================= BACK SIDE ================= */}
+  {/* ================= BACK SIDE ================= */}
+  <div
+  className="absolute inset-0 backface-hidden rounded-3xl flex flex-col items-center justify-center mt-10"
+  style={{ transform: "rotateY(180deg)", backfaceVisibility: "hidden" }}
+>
 <div
-  className="absolute inset-0 backface-hidden rounded-3xl flex flex-col items-center justify-center"
-  style={{
-    transform: "rotateY(180deg)",
-    backfaceVisibility: "hidden",
-  }}
+  className="relative w-[360px] max-h-[320px] bg-white rounded-xl border border-gray-300 shadow-md font-sans flex flex-col justify-between mt-10"
+  style={{ minHeight: "300px" }}
 >
 
-  {/* === Corner Dotted sections === */}
-    {/* Top-left */}
-    <div className="absolute top-3 left-3 w-6 h-6 border-t-2 border-l-2 border-dotted border-[#3A4F6A] rounded-tl-xl"></div>
-    {/* Top-right */}
-    <div className="absolute top-3 right-3 w-6 h-6 border-t-2 border-r-2 border-dotted border-[#3A4F6A] rounded-tr-xl"></div>
-    {/* Bottom-left */}
-    <div className="absolute bottom-3 left-3 w-6 h-6 border-b-2 border-l-2 border-dotted border-[#3A4F6A] rounded-bl-xl"></div>
-    {/* Bottom-right */}
-    <div className="absolute bottom-3 right-3 w-6 h-6 border-b-2 border-r-2 border-dotted border-[#3A4F6A] rounded-br-xl"></div>
+  
+  {/* ===  Logos section === */}
+  <div className="flex justify-between items-center px-6 pt-3">
+    <img src={belforlogo} alt={`${org} logo`} className="h-10 object-contain" />
+    <img src={logo} alt={`${org} partner logo`} className="h-9 object-contain" />
+  </div>
 
-  {/* === Outer Frame section === */}
-  <div className="relative bg-[#0B1E35] rounded-2xl p-3 shadow-lg flex items-center justify-center w-[190px] h-[190px]">
-    <div className="bg-white rounded-xl p-[6px]">
-      <QRCodeCanvas
-        value={[
-          "BEGIN:VCARD",
-          "VERSION:3.0",
-          `FN:${name}`,
-          `TITLE:${role}`,
-          `ORG:${org}`,
-          `TEL:${phoneNumber}`,
-          `EMAIL:${name.split(" ")[0].toLowerCase()}@${org.split(" ")[0].toLowerCase()}.com`,
-          `URL:${websiteUrl}`,
-          "END:VCARD",
-        ].join("\r\n")}
-        size={160}
-        bgColor="#ffffff"
-        fgColor="#000000"
-        level="H"
-        style={{ width: "160px", height: "160px" }}
-      />
+  {/* === Barcode Section === */}
+  <div className="flex flex-col items-center justify-center mt-2 px-6">
+    <Barcode
+      value={staffId || "N/A"}
+      format="CODE128"
+      width={2}
+      height={70}
+      displayValue={false}
+      background="#ffffff"
+      lineColor="#000000"
+    />
+    <p className="text-black font-bold tracking-widest text-lg mt-1">
+      SCAN
+    </p>
+  </div>
+
+  {/* === Verification Text === */}
+  <div className="text-center px-8 mt-1 text-black text-[11px] leading-snug">
+    This cardholder is an authorized employee of{" "}
+    <span className="font-semibold">{org}</span>. Verify credentials via the QR code.{" "}
+    {org} is not liable for any actions taken without proper verification.
+  </div>
+
+  {/* === Footer Bar === */}
+
+    <div className="w-full bg-[#14b8a6] mb-4 text-white text-center py-2 text-sm font-medium tracking-wide">
+      For any suspicious activity, call {phoneNumber}
+
     </div>
 
-    {/* ===  Logo at the center section === */}
-<div className="absolute inset-0 flex items-center justify-center ">
-  <div className="relative w-10 h-10 bg-[#0B1E35] rounded-lg flex items-center justify-center border-2 border-white shadow-md">
-    <img
-      src="/images/logo.png"
-      alt="OnTap logo"
-      className="w-6 h-6 object-contain"
-    />
+    {/* === Footer Base Extension === */}
+    <div className="absolute -bottom-1 left-0 w-full h-6 bg-white border-x border-b border-gray-300 rounded-b-xl"></div>
 
-    {/* === Small dotted corners around the logo section === */}
-    {/* Top-left */}
-    <div className="absolute top-[2px] left-[2px] w-2 h-2 border-t-2 border-l-2 border-dotted border-white rounded-tl-[2px]"></div>
-    {/* Top-right */}
-    <div className="absolute top-[2px] right-[2px] w-2 h-2 border-t-2 border-r-2 border-dotted border-white rounded-tr-[2px]"></div>
-    {/* Bottom-left */}
-    <div className="absolute bottom-[2px] left-[2px] w-2 h-2 border-b-2 border-l-2 border-dotted border-white rounded-bl-[2px]"></div>
-    {/* Bottom-right */}
-    <div className="absolute bottom-[2px] right-[2px] w-2 h-2 border-b-2 border-r-2 border-dotted border-white rounded-br-[2px]"></div>
+    
   </div>
+
 </div>
 
-  </div>
-
-{/* === Text Below the qr code section === */}
-<p className=" text-xs font-semibold text-green uppercase tracking-widest">
-    Scan to save contact
-  </p>
-  
-          
-        </div>
       </div>
     </div>
   );
