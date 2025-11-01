@@ -48,29 +48,34 @@ const FlippableCard = ({
   xmlns="http://www.w3.org/2000/svg"
   viewBox="0 0 1000 400"
   className="absolute inset-0 w-full h-full opacity-55 pointer-events-none"
+  
   preserveAspectRatio="none"
 >
   {/* === Top-Right Extended Flowing Waves === */}
-  {Array.from({ length: 20 }).map((_, i) => {
-    const offsetY = i * 6; 
-    const intensity = 0.7 - i * 0.035;
-    const strokeW = 1.2 - i * 0.04;
+  {/*
+  {Array.from({ length: 18 }).map((_, i) => {
+    const offsetY = i * 6;              
+    const intensity = 0.55 - i * 0.02;   
+    const strokeW = 0.9 - i * 0.02;      
 
     return (
       <path
         key={`top-${i}`}
-        d={`M200 ${40 + offsetY}
-           C600 ${-100 + i * 3},
-            900 ${200 + i * 5},
-            1300 ${-40 + i * 2}
-           S1500 ${-200 + i * 2},
-            1600 ${0 + i * 2}`}
+        d={`M200 ${30 + offsetY}
+           C500 ${-100 + i * 2}, 
+            950 ${180 + i * 4},
+            1250 ${0 + i * 3}
+           S1450 ${-150 + i * 2},
+            1600 ${-50 + i * 2}`}
         fill="none"
         stroke={`rgba(255,255,255,${intensity})`}
         strokeWidth={strokeW}
       />
     );
   })}
+
+*/}
+
 
 
 
