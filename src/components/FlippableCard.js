@@ -44,6 +44,59 @@ const FlippableCard = ({
             {/* === Main Card === */}
             <div className="relative flex flex-col sm:flex-row items-stretch justify-between p-3 sm:p-4 rounded-xl shadow-lg bg-[#0B1E35] text-white 
             transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl overflow-hidden min-h-[160px] max-h-[220px] w-full">
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 1000 400"
+  className="absolute inset-0 w-full h-full opacity-55 pointer-events-none"
+  preserveAspectRatio="none"
+>
+  {/* === Top-Right Extended Flowing Waves === */}
+  {Array.from({ length: 20 }).map((_, i) => {
+    const offsetY = i * 6; 
+    const intensity = 0.7 - i * 0.035;
+    const strokeW = 1.2 - i * 0.04;
+
+    return (
+      <path
+        key={`top-${i}`}
+        d={`M200 ${40 + offsetY}
+           C600 ${-100 + i * 3},
+            900 ${200 + i * 5},
+            1300 ${-40 + i * 2}
+           S1500 ${-200 + i * 2},
+            1600 ${0 + i * 2}`}
+        fill="none"
+        stroke={`rgba(255,255,255,${intensity})`}
+        strokeWidth={strokeW}
+      />
+    );
+  })}
+
+
+
+  {/* === Bottom-Left Reflective Waves === */}
+  {Array.from({ length: 14 }).map((_, i) => {
+    const offsetY = i * 10;
+    const intensity = 0.55 - i * 0.03;
+    const strokeW = 1.1 - i * 0.04;
+
+    return (
+      <path
+        key={`bottom-${i}`}
+        d={`M0 ${360 + offsetY}
+           C${200 + i * 5} ${400 - i * 3},
+            ${480 + i * 7} ${340 - i * 5},
+            800 ${390 - i * 2}
+           S${600 + i * 5} ${420 - i * 3},
+            900 ${400 - i * 2}`}
+        fill="none"
+        stroke={`rgba(255,255,255,${intensity})`}
+        strokeWidth={strokeW}
+      />
+    );
+  })}
+</svg>
+
 
 
               {/* === Left Column: Logo and Profile === */}
@@ -119,7 +172,8 @@ const FlippableCard = ({
               <h3 className="font-semibold italic text-[9px] sm:text-[10px] truncate max-w-[80px] sm:max-w-[90px]">
                 {signature}
                   </h3>
-                  <div className="flex flex-col leading-tight min-w-0">
+
+                  <div className="flex flex-col  leading-tight min-w-0 ">
                     <p className="text-[8px] sm:text-[9px] text-gray-400 uppercase">Staff ID</p>
                     <p className="text-[9px] sm:text-[10px] font-semibold text-white break-all">{staffId}</p>
                   </div>
@@ -152,11 +206,11 @@ const FlippableCard = ({
     </div>
 
               {/* Valid Thru */}
-              <div className="absolute bottom-4 left-1/2 transform -translate-x-[5%] text-center">
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-[-27%] text-center">
                 <p className="text-[8px] sm:text-[9px] text-gray-400 font-semibold uppercase leading-tight">
                   Valid Thru
                 </p>
-                <p className="text-[8px] sm:text-[9px] font-semibold text-white leading-tight">
+                <p className="text-[9px] sm:text-[10px] font-semibold text-white leading-tight">
                   {validThru}
                 </p>
               </div>
