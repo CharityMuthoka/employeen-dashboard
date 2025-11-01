@@ -27,7 +27,8 @@ const FlippableCard = ({
     >
       {/* === Flip Container === */}
       <div
-        className={`relative w-full h-[220px] rounded-3xl transition-transform duration-500`}
+        className={`relative w-full h-[300px] rounded-2xl transition-transform duration-300`}
+        
         style={{
           transformStyle: "preserve-3d",
           transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)",
@@ -263,60 +264,52 @@ const FlippableCard = ({
           </div>
         </div>
 
-  {/* ================= BACK SIDE ================= */}
-  <div
-  className="absolute inset-0 backface-hidden rounded-3xl flex flex-col items-center justify-center mt-10"
-  style={{ transform: "rotateY(180deg)", backfaceVisibility: "hidden" }}
->
+{/* ================= BACK SIDE ================= */}
 <div
-  className="relative w-[360px] max-h-[320px] bg-white rounded-xl border border-gray-300 shadow-md font-sans flex flex-col justify-between mt-10"
-  style={{ minHeight: "300px" }}
+  className="absolute inset-0 backface-hidden rounded-3xl bg-white border border-gray-300 shadow-md flex flex-col justify-between overflow-hidden"
+  style={{
+    transform: "rotateY(180deg)",
+    backfaceVisibility: "hidden",
+    width: "100%",
+    height: "100%",
+  }}
 >
-
-  
-  {/* ===  Logos section === */}
-  <div className="flex justify-between items-center px-6 pt-3">
-    <img src={belforlogo} alt={`${org} logo`} className="h-10 object-contain" />
-    <img src={logo} alt={`${org} partner logo`} className="h-9 object-contain" />
+  {/* === Logos === */}
+  <div className="flex justify-between items-center px-5 pt-3">
+    <img src={belforlogo} alt={`${org} logo`} className="h-8 sm:h-9 object-contain" />
+    <img src={logo} alt={`${org} partner logo`} className="h-7 sm:h-8 object-contain" />
   </div>
 
-  {/* === Barcode Section === */}
-  <div className="flex flex-col items-center justify-center mt-2 px-6">
+  {/* === Barcode & Text === */}
+  <div className="flex flex-col items-center justify-center flex-grow px-4">
     <Barcode
       value={staffId || "N/A"}
       format="CODE128"
-      width={2}
-      height={70}
+      width={1.5}
+      height={55}
       displayValue={false}
       background="#ffffff"
       lineColor="#000000"
     />
-    <p className="text-black font-bold tracking-widest text-lg mt-1">
-      SCAN
+    <p className="text-black font-bold tracking-widest text-base mt-1">SCAN</p>
+    <p className="text-[10px] text-center mt-1 leading-snug text-gray-700 px-4">
+      This cardholder is an authorized employee of{" "}
+      <span className="font-semibold">{org}</span>. Verify credentials via the QR code.{" "}
+      {org} is not liable for any actions taken without proper verification.
     </p>
   </div>
 
-  {/* === Verification Text === */}
-  <div className="text-center px-8 mt-1 text-black text-[11px] leading-snug">
-    This cardholder is an authorized employee of{" "}
-    <span className="font-semibold">{org}</span>. Verify credentials via the QR code.{" "}
-    {org} is not liable for any actions taken without proper verification.
+  {/* === Footer === */}
+  <div className="w-full bg-[#14b8a6] text-white text-center py-2 text-xs sm:text-sm font-medium tracking-wide rounded-b-3xl">
+    For any suspicious activity, call {phoneNumber}
   </div>
 
-  {/* === Footer Bar === */}
-
-    <div className="w-full bg-[#14b8a6] mb-4 text-white text-center py-2 text-sm font-medium tracking-wide">
-      For any suspicious activity, call {phoneNumber}
-
-    </div>
-
-    {/* === Footer Base Extension === */}
-    <div className="absolute -bottom-1 left-0 w-full h-6 bg-white border-x border-b border-gray-300 rounded-b-xl"></div>
-
-    
+  {/* White base extending below */}
+  <div className="absolute left-0 w-full h-6 bg-white border-x border-b border-gray-300 rounded-b-xl"
+         style={{ bottom: "-24px" }}></div> 
   </div>
 
-</div>
+
 
       </div>
     </div>
