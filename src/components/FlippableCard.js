@@ -266,33 +266,37 @@ const FlippableCard = ({
 
 {/* ================= BACK SIDE ================= */}
 <div
-  className="absolute inset-0 backface-hidden rounded-3xl bg-white border border-gray-300 shadow-md flex flex-col justify-between overflow-hidden"
+  className="absolute inset-0 backface-hidden rounded-3xl bg-white border border-gray-300 shadow-md flex flex-col justify-between"
   style={{
     transform: "rotateY(180deg)",
     backfaceVisibility: "hidden",
     width: "100%",
-    height: "100%",
+    height: "calc(100% + 45px)",
+    overflow: "hidden",
+    top: 0,
   }}
 >
-  {/* === Logos === */}
-  <div className="flex justify-between items-center px-5 pt-3">
-    <img src={belforlogo} alt={`${org} logo`} className="h-8 sm:h-9 object-contain" />
-    <img src={logo} alt={`${org} partner logo`} className="h-7 sm:h-8 object-contain" />
+  {/* === Logos Row === */}
+  <div className="flex justify-between items-center px-6 pt-4">
+    <img src={belforlogo} alt={`${org} logo`} className="h-9 sm:h-10 object-contain" />
+    <img src={logo} alt="OnTap logo" className="h-8 sm:h-9 object-contain" />
   </div>
 
-  {/* === Barcode & Text === */}
-  <div className="flex flex-col items-center justify-center flex-grow px-4">
+  {/* === Barcode & Info === */}
+  <div className="flex flex-col items-center justify-center flex-grow px-8">
     <Barcode
       value={staffId || "N/A"}
       format="CODE128"
-      width={1.5}
-      height={55}
+      width={1.8}
+      height={65}
       displayValue={false}
       background="#ffffff"
       lineColor="#000000"
     />
-    <p className="text-black font-bold tracking-widest text-base mt-1">SCAN</p>
-    <p className="text-[10px] text-center mt-1 leading-snug text-gray-700 px-4">
+    <p className="text-[#0B1E35] font-extrabold tracking-widest text-lg mt-1">
+      SCAN
+    </p>
+    <p className="text-[11px] text-center mt-2 leading-snug text-gray-700">
       This cardholder is an authorized employee of{" "}
       <span className="font-semibold">{org}</span>. Verify credentials via the QR code.{" "}
       {org} is not liable for any actions taken without proper verification.
@@ -300,16 +304,18 @@ const FlippableCard = ({
   </div>
 
   {/* === Footer === */}
-  <div className="w-full bg-[#14b8a6] text-white text-center py-2 text-xs sm:text-sm font-medium tracking-wide rounded-b-3xl">
+  <div
+    className="w-full bg-[#14b8a6] text-white text-center py-2 text-sm font-medium tracking-wide"
+    style={{
+      marginBottom: "6px",
+    }}
+  >
     For any suspicious activity, call {phoneNumber}
   </div>
 
-  {/* White base extending below */}
-  <div className="absolute left-0 w-full h-6 bg-white border-x border-b border-gray-300 rounded-b-xl"
-         style={{ bottom: "-24px" }}></div> 
-  </div>
-
-
+  {/* === Invisible Spacer  === */}
+  <div className="h-[90px]"></div> 
+</div>
 
       </div>
     </div>
