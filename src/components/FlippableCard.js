@@ -4,19 +4,24 @@ import Barcode from "react-barcode";
 import logo from "../assets/ontap.png";
 import belforlogo from "../assets/belfor_logo.png";
 
-const FlippableCard = ({
-  name,
-  role,
-  department,
-  staffId,
-  validThru,
-  profileUrl,
-  org,
-  phoneNumber,
-  signature,
-}) => {
+
+
+  const FlippableCard = ({
+    name,
+    role,
+    department,
+    staffId,
+    validThru,
+    profileUrl,
+    org,
+    phoneNumber,
+    signature,
+    bgColor="#0B1E35",   
+  }) => {
+  
   const [flipped, setFlipped] = useState(false);
   const handleFlip = () => setFlipped((prev) => !prev);
+  const isGradient = bgColor === "silver-gradient";
 
 
   return (
@@ -43,8 +48,32 @@ const FlippableCard = ({
           <div className="flex flex-col w-full rounded-3xl shadow bg-transparent p-0 hover:shadow-lg transition-shadow duration-200">
 
             {/* === Main Card === */}
-            <div className="relative flex flex-col sm:flex-row items-stretch justify-between p-3 sm:p-4 rounded-xl shadow-lg bg-[#0B1E35] text-white 
-            transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl overflow-hidden min-h-[160px] max-h-[220px] w-full">
+
+            <div
+  className={`relative flex flex-col sm:flex-row items-stretch justify-between 
+  p-3 sm:p-4 rounded-xl shadow-lg 
+  transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl 
+  overflow-hidden min-h-[160px] max-h-[220px] w-full
+  ${
+    bgColor === "silver-gradient"
+      ? "bg-[linear-gradient(to_right,white_40%,#A8A9AD_100%)] text-gray-900"
+    : bgColor === "blue-purple-gradient"
+      ? "bg-gradient-to-tr from-[#001F3F] via-[#102A70] to-[#A020F0] text-white"
+    : "text-white"
+  }`}
+  style={{
+    background:
+      bgColor === "silver-gradient"
+        ? undefined 
+        : bgColor !== "blue-purple-gradient"
+        ? bgColor 
+        : undefined,
+  }}
+>
+
+
+  
+
 <svg
   xmlns="http://www.w3.org/2000/svg"
   viewBox="0 0 1000 400"
@@ -115,13 +144,16 @@ const FlippableCard = ({
                       alt={`${org} logo`} 
                       className="w-3.5 h-3.5 object-contain sm:w-4 sm:h-4"
                     />        
-                    <h1 className="text-[12px] sm:text-[13px] font-bold tracking-wide leading-tight truncate max-w-[70px] sm:max-w-[80px]">
-                      {org.split(" ")[0].toUpperCase()}
-                    </h1>
+                    <h1 className={`text-[12px] sm:text-[13px] font-bold tracking-wide leading-tight truncate max-w-[70px] sm:max-w-[80px] 
+        ${bgColor === "silver-gradient" ? "text-gray-900" : "text-white"}`}>
+        {org.split(" ")[0].toUpperCase()}
+      </h1>
+                    
                   </div>
-                  <p className="text-[6.5px] sm:text-[7px] text-gray-300 tracking-widest uppercase leading-tight truncate max-w-[90px] sm:max-w-[100px]">
-                    {org.split(" ").slice(1).join(" ")}
-                  </p>
+                  <p className={`text-[6.5px] sm:text-[7px] tracking-widest uppercase leading-tight truncate max-w-[90px] sm:max-w-[100px] 
+      ${bgColor === "silver-gradient" ? "text-gray-700" : "text-gray-300"}`}>
+      {org.split(" ").slice(1).join(" ")}
+    </p>
                 </div>
 
   
@@ -175,27 +207,46 @@ const FlippableCard = ({
 
           {/* Signature & Staff ID */}
             <div className="flex items-center justify-between mt-2 w-full space-x-2">
-              <h3 className="font-semibold italic text-[9px] sm:text-[10px] truncate max-w-[80px] sm:max-w-[90px]">
-                {signature}
-                  </h3>
+            <h3 className={`font-semibold italic text-[9px] sm:text-[10px] truncate max-w-[80px] sm:max-w-[90px] 
+      ${bgColor === "silver-gradient" ? "text-gray-900" : "text-white"}`}>
+      {signature}
+    </h3>
 
                   <div className="flex flex-col  leading-tight min-w-0 ">
-                    <p className="text-[8px] sm:text-[9px] text-gray-400 uppercase">Staff ID</p>
-                    <p className="text-[9px] sm:text-[10px] font-semibold text-white break-all">{staffId}</p>
-                  </div>
+                  <p className={`text-[8px] sm:text-[9px] uppercase 
+        ${bgColor === "silver-gradient" ? "text-gray-800" : "text-gray-400"}`}>
+        Staff ID
+      </p>              
+      <p className={`text-[9px] sm:text-[10px] font-semibold break-all 
+        ${bgColor === "silver-gradient" ? "text-black" : "text-white"}`}>
+        {staffId}
+      </p>              
+          </div>
                 </div>
               </div>
 
               {/* === Middle Section === */}
               <div className="flex flex-col justify-center flex-grow h-full px-1 sm:px-2 mt-6 sm:mt-8 overflow-hidden">
               <div className="min-w-0">
-                  <h2 className="text-[13px] sm:text-[14px] font-bold uppercase leading-tight truncate">{name}</h2>
-                  <p className="text-[10px] sm:text-[11px] text-gray-200  uppercase truncate">{role}</p>
-                </div>
+              <h2 className={`text-[13px] sm:text-[14px] font-bold uppercase leading-tight truncate 
+      ${bgColor === "silver-gradient" ? "text-black" : "text-white"}`}>
+      {name}
+    </h2>                  
+    <p className={`text-[10px] sm:text-[11px] uppercase truncate 
+      ${bgColor === "silver-gradient" ? "text-gray-800" : "text-gray-200"}`}>
+      {role}
+    </p>               
+     </div>
                 <div className="min-w-0 mt-2 sm:mt-2.5">
-                  <p className="text-[9px] sm:text-[10px] text-gray-400 uppercase tracking-wide">Department</p>
-                  <p className="text-[11px] sm:text-[12px] font-semibold uppercase text-white truncate">{department}</p>
-                </div>
+                <p className={`text-[9px] sm:text-[10px] uppercase tracking-wide 
+      ${bgColor === "silver-gradient" ? "text-gray-700" : "text-gray-400"}`}>
+      Department
+    </p>                 
+    <p className={`text-[11px] sm:text-[12px] font-semibold uppercase truncate 
+      ${bgColor === "silver-gradient" ? "text-black" : "text-white"}`}>
+      {department}
+    </p>              
+      </div>
               </div>
 
               {/* === Right Section - NFC icons === */}
@@ -213,12 +264,15 @@ const FlippableCard = ({
 
               {/* Valid Thru */}
               <div className="absolute bottom-4 left-1/2 transform -translate-x-[-27%] text-center">
-                <p className="text-[8px] sm:text-[9px] text-gray-400 font-semibold uppercase leading-tight">
-                  Valid Thru
-                </p>
-                <p className="text-[9px] sm:text-[10px] font-semibold text-white leading-tight">
-                  {validThru}
-                </p>
+              <p className={`text-[8px] sm:text-[9px] font-semibold uppercase leading-tight 
+    ${bgColor === "silver-gradient" ? "text-gray-700" : "text-gray-400"}`}>
+    Valid Thru
+  </p>
+
+              <p className={`text-[9px] sm:text-[10px] font-semibold leading-tight 
+    ${bgColor === "silver-gradient" ? "text-black" : "text-white"}`}>
+    {validThru}
+  </p>
               </div>
   
     

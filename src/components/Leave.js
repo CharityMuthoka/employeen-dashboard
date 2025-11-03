@@ -17,7 +17,6 @@ const Leave = ({ setActivePage, activePage }) => {
   const handleLeaveSubmit = (formData) => {
     // Handle the form submission here
     console.log("Leave form submitted:", formData);
-    // You would typically send this data to an API
   };
 
   return (
