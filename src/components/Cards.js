@@ -263,9 +263,7 @@ const websiteUrl="https://ontapke.com";
         bgColor="#0B1E35"
       /> 
  {/* === card 2 === */}
- {/* ===  Card Wrapper === */}
 
-{/* === The Main Card === */}
 <FlippableCard
         name="Victor Emefo"
         role="Product Designer"
@@ -281,7 +279,6 @@ const websiteUrl="https://ontapke.com";
       /> 
 
 {/* === card 3 === */}
-  {/* === Card Wrapper === */}
   <FlippableCard
         name="Victor Emefo"
         role="Product Designer"
@@ -296,22 +293,7 @@ const websiteUrl="https://ontapke.com";
         bgColor="blue-purple-gradient"   
            /> 
 
-{/* ===== flippable card section ==== */}
-{/*
-<FlippableCard
-  name={name}
-  role={role}
-  department={department}
-  staffId={staffId}
-  validThru={validThru}
-  profileUrl={profileUrl}
-  org={org}
-  phoneNumber={phoneNumber}
-  signature={signature}
-  websiteUrl={websiteUrl}
-/>
 
-*/}
 
 
 

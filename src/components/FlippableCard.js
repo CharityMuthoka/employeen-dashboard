@@ -64,12 +64,13 @@ import belforlogo from "../assets/belfor_logo.png";
   style={{
     background:
       bgColor === "silver-gradient"
-        ? undefined 
+        ? undefined
         : bgColor !== "blue-purple-gradient"
-        ? bgColor 
+        ? bgColor // Solid colors (like #0B1E35)
         : undefined,
   }}
 >
+
 
 
   
@@ -197,13 +198,27 @@ import belforlogo from "../assets/belfor_logo.png";
 
 
     {/* Profile Image */}
-        <div className="w-[60px] h-[60px] sm:w-[80px] sm:h-[80px] md:w-[90px] md:h-[90px] rounded-lg overflow-hidden border border-gray-500">
-          <img
-              src={profileUrl}
-              alt={`${name} Profile`}
-             className="w-full h-full object-cover"
-          />
-        </div>
+    {bgColor === "blue-purple-gradient" ? (
+  <div className="p-[3px] rounded-full border border-[#3EA6FF] shadow-[0_0_15px_3px_rgba(62,166,255,0.6)] flex items-center justify-center transition-transform duration-300 hover:shadow-[0_0_25px_5px_rgba(62,166,255,0.8)]">
+    <div className="w-[60px] h-[60px] sm:w-[80px] sm:h-[80px] md:w-[90px] md:h-[90px] rounded-full overflow-hidden border border-gray-500">
+      <img
+        src={profileUrl}
+        alt={`${name} Profile`}
+        className="w-full h-full object-cover"
+      />
+    </div>
+  </div>
+) : (
+  //  Default square image for other cards
+  <div className="w-[60px] h-[60px] sm:w-[80px] sm:h-[80px] md:w-[90px] md:h-[90px] rounded-lg overflow-hidden border border-gray-500">
+    <img
+      src={profileUrl}
+      alt={`${name} Profile`}
+      className="w-full h-full object-cover"
+    />
+  </div>
+)}
+
 
           {/* Signature & Staff ID */}
             <div className="flex items-center justify-between mt-2 w-full space-x-2">
