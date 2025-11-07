@@ -15,19 +15,7 @@ const Cards = ({ setActivePage, activePage }) => {
     { id: "announcements", label: "Announcements", icon: "/images/announcements.png", whiteIcon: "/images/whiteannouncements.png" },
   ];
 
-  //dummy staff data
-const name="Victor Emefo";
-const role="Product Designer";
-const department="Design";
-const staffId="EMP4526";
-const validThru = "05/24/2026";
-const profileUrl = "/images/avatar_5.png";
-const org="Ontap Global Workspace";
-const phoneNumber="0734253627"
-const signature="signature";
-const websiteUrl="https://ontapke.com";
-
-
+ 
   return (
     <div className="flex w-full h-screen overflow-hidden">
       {/* Fixed Sidebar */}
@@ -171,7 +159,7 @@ const websiteUrl="https://ontapke.com";
               </div>
             </div>
 
-            {/* Notifications + Avatar */}
+            {/* Notifications and Avatar */}
             <div className="flex items-center gap-3 w-20">
               <div className="w-6 h-4">
                 <img
@@ -181,7 +169,7 @@ const websiteUrl="https://ontapke.com";
                   alt="Notification icon"
                 />
               </div>
-              {/* Replaced image with actual thin vertical line */}
+              {/*  image  */}
               <div className="w-px h-6 bg-gray-300"></div>
               <img
                 className="rounded-full border-2"
@@ -245,10 +233,6 @@ const websiteUrl="https://ontapke.com";
 
 
   {/* === card 1 === */}
-  
-  {/* === Card Wrapper === */}
-
-{/* === The Main Card === */}
 <FlippableCard
         name="Victor Emefo"
         role="Product Designer"
@@ -292,10 +276,6 @@ const websiteUrl="https://ontapke.com";
         websiteUrl="https://ontapke.com"
         bgColor="blue-purple-gradient"   
            /> 
-
-
-
-
 
 
   </div>

@@ -228,7 +228,7 @@ const Task = ({ setActivePage, activePage }) => {
             </div>
             <div
             className="flex justify-center items-center rounded-md w-[180px] h-12 bg-teal-500 cursor-pointer hover:bg-teal-600 transition-colors"
-            onClick={() => setIsLogTaskModalOpen(true)} // Open LogTaskModal
+            onClick={() => setIsLogTaskModalOpen(true)} 
           >
             <div className="flex flex-row items-center gap-2">
               <div className="flex justify-center items-center w-5 h-5">
@@ -263,7 +263,6 @@ const Task = ({ setActivePage, activePage }) => {
       placeholder="Search for tasks"
       className="flex-1 text-xs text-gray-400 font-normal outline-none"
       onChange={(e) => {
-        // Add your search handler here, e.g. setSearchTerm(e.target.value)
         console.log(e.target.value);
       }}
     />

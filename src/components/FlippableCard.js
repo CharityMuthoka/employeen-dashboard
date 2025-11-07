@@ -16,12 +16,12 @@ import belforlogo from "../assets/belfor_logo.png";
     org,
     phoneNumber,
     signature,
-    bgColor="#0B1E35",   
+    bgColor="#0B1E35",
+    showDetails=true,
   }) => {
   
   const [flipped, setFlipped] = useState(false);
   const handleFlip = () => setFlipped((prev) => !prev);
-  const isGradient = bgColor === "silver-gradient";
 
 
   return (
@@ -66,14 +66,12 @@ import belforlogo from "../assets/belfor_logo.png";
       bgColor === "silver-gradient"
         ? undefined
         : bgColor !== "blue-purple-gradient"
-        ? bgColor // Solid colors (like #0B1E35)
+        ? bgColor 
         : undefined,
   }}
 >
 
-
-
-  
+ 
 
 <svg
   xmlns="http://www.w3.org/2000/svg"
@@ -209,7 +207,7 @@ import belforlogo from "../assets/belfor_logo.png";
     </div>
   </div>
 ) : (
-  //  Default square image for other cards
+  //   square images for card 1 and card 2
   <div className="w-[60px] h-[60px] sm:w-[80px] sm:h-[80px] md:w-[90px] md:h-[90px] rounded-lg overflow-hidden border border-gray-500">
     <img
       src={profileUrl}
@@ -294,6 +292,7 @@ import belforlogo from "../assets/belfor_logo.png";
             </div>
 
             {/* === Below the Card Section === */}
+            {showDetails && (
             <div className="flex flex-col justify-start items-start gap-2.5 w-full mt-3">
               {/* Department & Access Level */}
               <div className="flex justify-center items-center rounded-lg w-full h-16 bg-gray-50">
@@ -330,8 +329,10 @@ import belforlogo from "../assets/belfor_logo.png";
                 </div>
               </div>
             </div>
+            )}
           </div>
         </div>
+            
 
 {/* ================= BACK SIDE ================= */}
 <div
@@ -345,16 +346,23 @@ import belforlogo from "../assets/belfor_logo.png";
     top: 0,
   }}
 >
-  {/* === Logos Row === */}
+
+
+
+  
+  {/* === Logos section === */}
   <div className="flex justify-between items-center px-6 pt-4">
     <img src={belforlogo} alt={`${org} logo`} className="h-9 sm:h-10 object-contain" />
     <img src={logo} alt="OnTap logo" className="h-8 sm:h-9 object-contain" />
   </div>
 
-  {/* === Barcode & Info === */}
+  
+
+  {/* === Barcode section & Info === */}
   <div className="flex flex-col items-center justify-center flex-grow px-8">
     <Barcode
       value={staffId || "N/A"}
+
       format="CODE128"
       width={1.8}
       height={65}
