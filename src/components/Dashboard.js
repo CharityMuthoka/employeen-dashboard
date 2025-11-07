@@ -424,7 +424,7 @@ useEffect(() => {
     </div>
 
     {/* === Profile Image === */}
-    <div className="p-[3px] rounded-lg border border-[#3EA6FF] shadow-[0_0_15px_3px_rgba(62,166,255,0.6)] flex items-center justify-center transition-transform duration-300 hover:shadow-[0_0_25px_5px_rgba(62,166,255,0.8)]">
+    <div className="p-[3px] rounded-lg  flex items-center justify-center transition-transform duration-300 ">
       <div className="w-[60px] h-[60px] sm:w-[80px] sm:h-[80px] md:w-[90px] md:h-[90px] rounded-lg overflow-hidden border border-gray-500">
         <img
           src={profileUrl}
