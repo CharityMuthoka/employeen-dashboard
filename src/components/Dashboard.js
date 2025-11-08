@@ -338,21 +338,17 @@ useEffect(() => {
     background: "#0B1E35",
   }}
 >
-
-  {/* === Subtle Background SVG Waves === */}
+  {/* === Background SVG Waves === */}
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 1000 400"
     className="absolute inset-0 w-full h-full opacity-55 pointer-events-none"
     preserveAspectRatio="none"
   >
-    
-    {/* === Bottom-Left Reflective Waves === */}
     {Array.from({ length: 14 }).map((_, i) => {
       const offsetY = i * 10;
       const intensity = 0.55 - i * 0.03;
       const strokeW = 1.1 - i * 0.04;
-
       return (
         <path
           key={`bottom-${i}`}
@@ -370,7 +366,7 @@ useEffect(() => {
     })}
   </svg>
 
-  {/* === Left Column: Logo + Profile === */}
+  {/* === Left Column: Logo and Profile section === */}
   <div className="flex flex-col z-10 justify-between h-full flex-shrink-0 space-y-1 sm:space-y-2">
     
     {/* Logo Section */}
@@ -424,7 +420,7 @@ useEffect(() => {
     </div>
 
     {/* === Profile Image === */}
-    <div className="p-[3px] rounded-lg  flex items-center justify-center transition-transform duration-300 ">
+    <div className="p-[3px] rounded-lg flex items-center justify-center transition-transform duration-300">
       <div className="w-[60px] h-[60px] sm:w-[80px] sm:h-[80px] md:w-[90px] md:h-[90px] rounded-lg overflow-hidden border border-gray-500">
         <img
           src={profileUrl}
@@ -462,27 +458,70 @@ useEffect(() => {
     </div>
   </div>
 
-  {/* === Right Section - NFC icons === */}
-  <div className="flex sm:flex-col items-center justify-center gap-2 sm:gap-1 mt-8">
-    <div className="flex items-center justify-center w-6 h-6 rounded-full border border-blue-400 bg-[#102A49] hover:bg-blue-900 transition">
+  {/* === Right Section : NFC and Menu === */}
+  <div className="flex sm:flex-col items-center justify-center gap-2 sm:gap-1 mt-8 relative">
+   
+
+    {/* === Menu  Dots section === */}
+    <div className="relative flex items-center justify-center w-6 h-6 rounded-full border border-blue-400 bg-[#102A49] hover:bg-blue-900 transition">
       <img
         src="/images/nfc_card.png"
         alt="NFC"
-        className="w-6 h-6 object-contain animate-pulse"
+        className="w-4 h-4 object-contain animate-pulse"
       />
+
+<div className="absolute top-[215%] left-full  -translate-y-1/2" ref={menuRef}>
+        <button
+          onClick={() => setIsMenuOpen((open) => !open)}
+          className="w-5 h-5 flex items-center justify-center rounded-full hover:bg-gray-700 focus:outline-none"
+          aria-label="Options"
+        >
+          <svg
+            className="w-3.5 h-3.5 text-white"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <circle cx="10" cy="3" r="2" />
+            <circle cx="10" cy="10" r="2" />
+            <circle cx="10" cy="17" r="2" />
+          </svg>
+        </button>
+
+        {/* Dropdown */}
+        {isMenuOpen && (
+          <div className="absolute right-0 mt-1 w-20 bg-[#102A49] rounded-md shadow-lg z-10">
+            <button
+              onClick={() => {
+                setIsMenuOpen(false);
+                setActivePage("cards");
+              }}
+              className="block w-full text-left px-3 py-1 text-white hover:bg-blue-700 rounded-md"
+            >
+              Edit
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   </div>
 
+
   {/* === Valid Thru === */}
-  <div className="absolute bottom-4 left-1/2 transform -translate-x-[27%] text-center">
-    <p className="text-[8px] sm:text-[9px] text-gray-400 font-semibold uppercase leading-tight">
-      Valid Thru
-    </p>
-    <p className="text-[9px] sm:text-[10px] font-semibold text-white leading-tight">
-      {validThru}
-    </p>
-  </div>
+<div className="
+  absolute bottom-4 left-1/2 transform 
+  -translate-x-[5%] sm:-translate-x-[3%] md:-translate-x-[2%] 
+  text-center
+">
+  <p className="text-[8px] sm:text-[9px] text-gray-400 font-semibold uppercase leading-tight">
+    Valid Thru
+  </p>
+  <p className="text-[9px] sm:text-[10px] font-semibold text-white leading-tight">
+    {validThru}
+  </p>
 </div>
+
+</div>
+
 
 
       {/* Action Buttons */}
