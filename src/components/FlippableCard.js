@@ -275,18 +275,29 @@ import belforlogo from "../assets/belfor_logo.png";
        
     </div>
 
-              {/* Valid Thru */}
-              <div className="absolute bottom-4 left-1/2 transform -translate-x-[-27%] text-center">
-              <p className={`text-[8px] sm:text-[9px] font-semibold uppercase leading-tight 
-    ${bgColor === "silver-gradient" ? "text-gray-700" : "text-gray-400"}`}>
+        {/* === Valid Thru === */}
+<div
+  className="
+    absolute bottom-4 left-1/2 transform 
+    -translate-x-[8%] sm:-translate-x-[5%] md:-translate-x-[3%] lg:-translate-x-[2%]
+    text-center
+  "
+>
+  <p
+    className={`text-[8px] sm:text-[9px] font-semibold uppercase leading-tight 
+    ${bgColor === "silver-gradient" ? "text-gray-700" : "text-gray-400"}`}
+  >
     Valid Thru
   </p>
 
-              <p className={`text-[9px] sm:text-[10px] font-semibold leading-tight 
-    ${bgColor === "silver-gradient" ? "text-black" : "text-white"}`}>
+  <p
+    className={`text-[9px] sm:text-[10px] font-semibold leading-tight 
+    ${bgColor === "silver-gradient" ? "text-black" : "text-white"}`}
+  >
     {validThru}
   </p>
-              </div>
+</div>
+
   
     
             </div>
