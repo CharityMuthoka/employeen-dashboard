@@ -2,14 +2,12 @@ import React, { useState, useRef, useEffect} from "react";
 import LeaveModal from "./LeaveModal.js";
 import LogTaskModal from "./LogTaskModal.js";
 import { QRCodeCanvas } from 'qrcode.react';
-import FlippableCard from "./FlippableCard.js";
 
 
 
   
 
 const Dashboard = ({ setActivePage, activePage }) => {
-  const [activeTab, setActiveTab] = useState('idcards');
   const [isLeaveModalOpen, setIsLeaveModalOpen] = useState(false);
   const [isLogTaskModalOpen, setIsLogTaskModalOpen] = useState(false);
 
