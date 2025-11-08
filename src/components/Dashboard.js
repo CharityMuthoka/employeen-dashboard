@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect} from "react";
 import LeaveModal from "./LeaveModal.js";
 import LogTaskModal from "./LogTaskModal.js";
-import { QRCodeCanvas } from 'qrcode.react';
+//import { QRCodeCanvas } from 'qrcode.react';
 
 
 
@@ -42,9 +42,9 @@ const staffId="EMP4526";
 const validThru = "05/24/2026";
 const profileUrl = "/images/avatar_5.png";
 const org="Ontap Global Workspace";
-const phoneNumber="0734253627";
+//const phoneNumber="0734253627";
 const signature="signature";
-const websiteUrl="https://ontapke.com";
+//const websiteUrl="https://ontapke.com";
 
 
 

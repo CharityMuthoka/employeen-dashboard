@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { QRCodeCanvas } from "qrcode.react";
+//import { QRCodeCanvas } from "qrcode.react";
 import Barcode from "react-barcode";
 import logo from "../assets/ontap.png";
 import belforlogo from "../assets/belfor_logo.png";
