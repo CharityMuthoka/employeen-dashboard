@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { QRCodeCanvas } from 'qrcode.react';
+//import { QRCodeCanvas } from 'qrcode.react';
 import FlippableCard from "./FlippableCard.js";
 
 
