@@ -22,7 +22,6 @@ import belforlogo from "../assets/belfor_logo.png";
 
      
 
-    //const encodedValue = `${staffId}, ${name}, ${department}`;
 
 
   
@@ -382,8 +381,7 @@ import belforlogo from "../assets/belfor_logo.png";
   {/* === Barcode section === */}
   <div className="flex-grow flex flex-col items-center justify-center px-8 -mt-1">
   <Barcode
-    value={staffId || "N/A"}
-    //value={encodedValue}
+    value={staffId|| "N/A"}
     format="CODE128"
     width={1.5}
     height={35.5}
