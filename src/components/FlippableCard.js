@@ -50,7 +50,8 @@ import belforlogo from "../assets/belfor_logo.png";
   return (
     <div
       onClick={handleFlip}
-      className="relative w-full max-w-[400px] cursor-pointer"
+      className="relative w-full md:max-w-[400px] cursor-pointer"
+
       style={{ perspective: "1000px" }}
     >
       {/* === Flip Container === */}
@@ -330,7 +331,7 @@ import belforlogo from "../assets/belfor_logo.png";
   className="
     absolute bottom-4 left-1/2 transform 
     -translate-x-[8%] sm:-translate-x-[5%] md:-translate-x-[3%] lg:-translate-x-[-68%] 
-    text-center
+    text-center 
   "
 >
   <p
