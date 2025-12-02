@@ -227,7 +227,6 @@ const Cards = ({ setActivePage, activePage }) => {
   {activeTab === 'id cards' && (
     <>
 
-{/* two grid cards scetion */}
   {/* === Card Section Grid === */}
 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
 
@@ -261,6 +260,8 @@ const Cards = ({ setActivePage, activePage }) => {
         websiteUrl="https://ontapke.com"
         bgColor="silver-gradient" 
       /> 
+
+
 
 {/* === card 3 === */}
   <FlippableCard

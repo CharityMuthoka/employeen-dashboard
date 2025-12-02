@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useRef, useEffect} from "react";
 //import { QRCodeCanvas } from "qrcode.react";
 import Barcode from "react-barcode";
 import logo from "../assets/ontap.png";
@@ -6,22 +6,45 @@ import belforlogo from "../assets/belfor_logo.png";
 
 
 
-  const FlippableCard = ({
-    name,
-    role,
-    department,
-    staffId,
-    validThru,
-    profileUrl,
-    org,
-    phoneNumber,
-    signature,
-    bgColor="#0B1E35",
-    showDetails=true,
-  }) => {
+
+    const FlippableCard = ({
+      name="Victor Emefo",
+      role="Product Designer",
+      department = "Design",
+      staffId="EMP4526",
+      validThru="05/24/2026",
+      profileUrl = "/images/avatar_5.png",
+      org = "OnTap Global Workspace",
+      phoneNumber="0734253627",
+      signature = "Signature",
+      bgColor = "#0B1E35",
+      showDetails = true,
+    }) => {
+
+     
+    
+
+    //const encodedValue = `https://hrms.ontapke.com/user/${staffId}`;
+
+    //const encodedValue = `${staffId}, ${name}, ${department}`;
+
+
   
   const [flipped, setFlipped] = useState(false);
   const handleFlip = () => setFlipped((prev) => !prev);
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef(null);
+  // Close dropdown if clicked outside
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsMenuOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
 
   return (
@@ -52,8 +75,9 @@ import belforlogo from "../assets/belfor_logo.png";
             <div
   className={`relative flex flex-col sm:flex-row items-stretch justify-between 
   p-3 sm:p-4 rounded-xl shadow-lg 
-  transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl 
-  overflow-hidden min-h-[160px] max-h-[220px] w-full
+  transition-transform duration-200 
+
+  overflow-hidden min-h-[180px] max-h-[300px] w-full
   ${
     bgColor === "silver-gradient"
       ? "bg-[linear-gradient(to_right,white_40%,#A8A9AD_100%)] text-gray-900"
@@ -71,7 +95,8 @@ import belforlogo from "../assets/belfor_logo.png";
   }}
 >
 
- 
+
+
 
 <svg
   xmlns="http://www.w3.org/2000/svg"
@@ -80,30 +105,7 @@ import belforlogo from "../assets/belfor_logo.png";
   
   preserveAspectRatio="none"
 >
-  {/* === Top-Right Extended Flowing Waves === */}
-  {/*
-  {Array.from({ length: 18 }).map((_, i) => {
-    const offsetY = i * 6;              
-    const intensity = 0.55 - i * 0.02;   
-    const strokeW = 0.9 - i * 0.02;      
-
-    return (
-      <path
-        key={`top-${i}`}
-        d={`M200 ${30 + offsetY}
-           C500 ${-100 + i * 2}, 
-            950 ${180 + i * 4},
-            1250 ${0 + i * 3}
-           S1450 ${-150 + i * 2},
-            1600 ${-50 + i * 2}`}
-        fill="none"
-        stroke={`rgba(255,255,255,${intensity})`}
-        strokeWidth={strokeW}
-      />
-    );
-  })}
-
-*/}
+  
 
 
 
@@ -134,12 +136,14 @@ import belforlogo from "../assets/belfor_logo.png";
 
 
               {/* === Left Column: Logo and Profile === */}
-              <div className="flex flex-col z-10 justify-between h-full flex-shrink-0 space-y-1 sm:space-y-2">
-                {/* Logo Section */}
-                <div className="flex flex-col items-start -mt-1 sm:-mt-2 w-[90px] sm:w-[100px] overflow-hidden">
+              <div className="flex flex-col z-10 h-full flex-shrink-0 space-y-2   ">
+              {/* Logo Section */}
+              
+                <div className="flex flex-col items-start translate-x-4 sm:translate-x-6 w-[90px] sm:w-[100px] overflow-hidden">
+
                   <div className="flex items-center space-x-1 truncate">
                     <img 
-                      src="/images/logo.png" 
+                      src="/images/belfor tech.png" 
                       alt={`${org} logo`} 
                       className="w-3.5 h-3.5 object-contain sm:w-4 sm:h-4"
                     />        
@@ -153,12 +157,13 @@ import belforlogo from "../assets/belfor_logo.png";
       ${bgColor === "silver-gradient" ? "text-gray-700" : "text-gray-300"}`}>
       {org.split(" ").slice(1).join(" ")}
     </p>
-                </div>
+    </div>
+                
 
   
 
   {/* === Top-Right Metallic Circle Section === */}
-<div className="absolute top-0.5 right-3 w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden flex items-center justify-center shadow-md">
+<div className="absolute top-0.5 right-3 w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden flex items-center justify-center shadow-md">
 <div
   className="w-full h-full rounded-full flex items-center justify-center"
   style={{
@@ -185,7 +190,7 @@ import belforlogo from "../assets/belfor_logo.png";
   <img
     src="/images/logo.png"
     alt="OnTap Logo"
-    className="w-8 h-8 sm:w-10 sm:h-10 object-contain mix-blend-multiply"
+    className="w-6 h-6 sm:w-8 sm:h-8 object-contain mix-blend-multiply"
   />
 </div>
 
@@ -197,17 +202,14 @@ import belforlogo from "../assets/belfor_logo.png";
 
     {/* Profile Image */}
     {bgColor === "blue-purple-gradient" ? (
-  <div className="p-[3px] rounded-full border border-[#3EA6FF] shadow-[0_0_15px_3px_rgba(62,166,255,0.6)] flex items-center justify-center transition-transform duration-300 hover:shadow-[0_0_25px_5px_rgba(62,166,255,0.8)]">
-    <div className="w-[60px] h-[60px] sm:w-[80px] sm:h-[80px] md:w-[90px] md:h-[90px] rounded-full overflow-hidden border border-gray-500">
-      <img
-        src={profileUrl}
-        alt={`${name} Profile`}
-        className="w-full h-full object-cover"
-      />
-    </div>
+  <div className="w-[60px] h-[60px] sm:w-[80px] sm:h-[80px] md:w-[90px] md:h-[90px] rounded-full overflow-hidden border border-[#3EA6FF] shadow-[0_0_15px_3px_rgba(62,166,255,0.6)]">
+    <img
+      src={profileUrl}
+      alt={`${name} Profile`}
+      className="w-full h-full object-cover"
+    />
   </div>
 ) : (
-  //   square images for card 1 and card 2
   <div className="w-[60px] h-[60px] sm:w-[80px] sm:h-[80px] md:w-[90px] md:h-[90px] rounded-lg overflow-hidden border border-gray-500">
     <img
       src={profileUrl}
@@ -218,25 +220,21 @@ import belforlogo from "../assets/belfor_logo.png";
 )}
 
 
-          {/* Signature & Staff ID */}
-            <div className="flex items-center justify-between mt-2 w-full space-x-2">
-            <h3 className={`font-semibold italic text-[9px] sm:text-[10px] truncate max-w-[80px] sm:max-w-[90px] 
-      ${bgColor === "silver-gradient" ? "text-gray-900" : "text-white"}`}>
-      {signature}
-    </h3>
 
-                  <div className="flex flex-col  leading-tight min-w-0 ">
-                  <p className={`text-[8px] sm:text-[9px] uppercase 
-        ${bgColor === "silver-gradient" ? "text-gray-800" : "text-gray-400"}`}>
-        Staff ID
-      </p>              
-      <p className={`text-[9px] sm:text-[10px] font-semibold break-all 
-        ${bgColor === "silver-gradient" ? "text-black" : "text-white"}`}>
-        {staffId}
-      </p>              
-          </div>
-                </div>
-              </div>
+          {/* Signature & Staff ID */}
+          <div className=" mt-4 w-full gap-2 ml-4">
+  <h3
+    className={`font-semibold italic text-[9px] sm:text-[10px] truncate 
+      max-w-[70px] sm:max-w-[80px]
+      ${bgColor === "silver-gradient" ? "text-gray-900" : "text-white"}`}
+  >
+    {signature}
+  </h3>
+
+ 
+</div>
+
+  </div>
 
               {/* === Middle Section === */}
               <div className="flex flex-col justify-center flex-grow h-full px-1 sm:px-2 mt-6 sm:mt-8 overflow-hidden">
@@ -251,35 +249,85 @@ import belforlogo from "../assets/belfor_logo.png";
     </p>               
      </div>
                 <div className="min-w-0 mt-2 sm:mt-2.5">
-                <p className={`text-[9px] sm:text-[10px] uppercase tracking-wide 
-      ${bgColor === "silver-gradient" ? "text-gray-700" : "text-gray-400"}`}>
+                <p className={`text-[11px] sm:text-[12px] font-semibold uppercase tracking-wide 
+      ${bgColor === "silver-gradient" ? "text-black" : "text-white"}`}>
       Department
     </p>                 
-    <p className={`text-[11px] sm:text-[12px] font-semibold uppercase truncate 
-      ${bgColor === "silver-gradient" ? "text-black" : "text-white"}`}>
+    <p className={`text-[9px] sm:text-[10px] font-semibold uppercase truncate 
+      ${bgColor === "silver-gradient" ? "text-gray-700" : "text-gray-400"}`}>
       {department}
     </p>              
       </div>
+
+      <div className="flex flex-col leading-tight min-w-0 mt-4">
+    <p
+      className={`text-[8px] sm:text-[9px] uppercase 
+        ${bgColor === "silver-gradient" ? "text-gray-800" : "text-gray-400"}`}
+    >
+      Staff ID
+    </p>
+    <p
+      className={`text-[9px] sm:text-[10px] font-semibold break-all 
+        ${bgColor === "silver-gradient" ? "text-black" : "text-white"}`}
+    >
+      {staffId}
+    </p>
+  </div>
               </div>
 
               {/* === Right Section - NFC icons === */}
-              <div className="flex sm:flex-col items-center justify-center gap-2 sm:gap-1 mt-8 ">
-      <div className="flex items-center justify-center w-6 h-6 rounded-full border border-blue-400 bg-[#102A49] hover:bg-blue-900 transition ">
+     
+    <div className="flex sm:flex-col items-center justify-center gap-2 sm:gap-1 mt-8 relative">
+   
 
-        <img
-          src="/images/nfc_card.png"
-          alt="NFC"
-          className="w-6 h-6 object-contain animate-pulse"
-        />
+    {/* === Menu  Dots section === */}
+    <div className="relative flex items-center justify-center w-6 h-6 rounded-full border transition">
+      <img
+        src="/images/white nfc.png"
+        alt="NFC"
+        className="w-4 h-4 object-contain "
+      />
+
+<div className="absolute top-[255%] left-[10%]  -translate-y-1/2" ref={menuRef}>
+        <button
+          onClick={() => setIsMenuOpen((open) => !open)}
+          className="w-5 h-5 flex items-center justify-center rounded-full hover:bg-gray-700 focus:outline-none"
+          aria-label="Options"
+        >
+          <svg
+            className="w-3.5 h-3.5 text-white"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <circle cx="10" cy="3" r="2" />
+            <circle cx="10" cy="10" r="2" />
+            <circle cx="10" cy="17" r="2" />
+          </svg>
+        </button>
+
+        {/* Dropdown */}
+        {isMenuOpen && (
+          <div className="absolute right-0 mt-1 w-20 bg-[#102A49] rounded-md shadow-lg z-10">
+            <button
+              onClick={() => {
+                setIsMenuOpen(false);
+              }}
+              className="block w-full text-left px-3 py-1 text-white hover:bg-blue-700 rounded-md"
+            >
+              Edit
+            </button>
+          </div>
+        )}
       </div>
-       
     </div>
+  </div>
+
 
         {/* === Valid Thru === */}
 <div
   className="
     absolute bottom-4 left-1/2 transform 
-    -translate-x-[8%] sm:-translate-x-[5%] md:-translate-x-[3%] lg:-translate-x-[2%]
+    -translate-x-[8%] sm:-translate-x-[5%] md:-translate-x-[3%] lg:-translate-x-[-68%] 
     text-center
   "
 >
@@ -297,116 +345,130 @@ import belforlogo from "../assets/belfor_logo.png";
     {validThru}
   </p>
 </div>
-
-  
     
+    </div>
+
             </div>
-
-            {/* === Below the Card Section === */}
-            {showDetails && (
-            <div className="flex flex-col justify-start items-start gap-2.5 w-full mt-3">
-              {/* Department & Access Level */}
-              <div className="flex justify-center items-center rounded-lg w-full h-16 bg-gray-50">
-                <div className="flex flex-row justify-between items-center w-full px-4">
-                  <div className="flex flex-col justify-start items-center gap-0.5">
-                    <div className="text-sm text-neutral-900 font-semibold">{role}</div>
-                    <div className="text-xs text-gray-500 font-medium">{department}</div>
-                  </div>
-                  <div className="flex flex-col justify-center items-center gap-0.5">
-                    <div className="text-sm text-neutral-900 font-semibold">Standard</div>
-                    <div className="text-xs text-gray-500 font-medium">Access Level</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Expiry & Actions */}
-              <div className="flex flex-col justify-start items-start gap-4 w-full">
-                <div className="flex flex-row justify-start items-center gap-2">
-                  <img width="16.3" height="16.3" src="/images/expiry.png" alt="Expiry icon" />
-                  <div className="text-sm text-gray-600 font-medium">Expires: {validThru}</div>
-                </div>
-
-                <div className="flex flex-row justify-between items-center w-full">
-                  <div className="flex flex-row justify-start items-center gap-4">
-                    <img width="18.5" height="18.5" src="/images/pencil.png" alt="Edit" className="cursor-pointer hover:bg-gray-100 p-1 rounded transition" />
-                    <img width="17.3" height="17.3" src="/images/download.png" alt="Download" className="cursor-pointer hover:bg-gray-100 p-1 rounded transition" />
-                    <img width="16" height="18.5" src="/images/trash.png" alt="Delete" className="cursor-pointer hover:bg-gray-100 p-1 rounded transition" />
-                  </div>
-
-                  <div className="flex flex-row justify-center items-center gap-1 px-4 py-1.5 rounded-lg border border-teal-500 h-8 cursor-pointer hover:bg-teal-50 transition-all duration-200 ease-in-out shadow-sm hover:shadow-md mr-3 mb-3">
-                    <img width="16" height="16" src="/images/preview.png" alt="Preview" />
-                    <div className="text-xs text-teal-500 font-medium">Preview</div>
-                  </div>
-                </div>
-              </div>
             </div>
-            )}
-          </div>
-        </div>
-            
 
 {/* ================= BACK SIDE ================= */}
 <div
-  className="absolute inset-0 backface-hidden rounded-3xl bg-white border border-gray-300 shadow-md flex flex-col justify-between"
+  className="absolute inset-0 backface-hidden rounded-3xl bg-transparent p-0"
   style={{
     transform: "rotateY(180deg)",
-    backfaceVisibility: "hidden",
-    width: "100%",
-    height: "calc(100% + 45px)",
-    overflow: "hidden",
-    top: 0,
+    backfaceVisibility: "hidden"
   }}
 >
+  {/* === Card Wrapper  === */}
+  <div className="relative flex flex-col  rounded-xl shadow-lg overflow-hidden min-h-[160px] max-h-[220px] w-full bg-white text-gray-900">
 
+  <div className="flex flex-col p-3 sm:p-4">
 
-
-  
   {/* === Logos section === */}
-  <div className="flex justify-between items-center px-6 pt-4">
-    <img src={belforlogo} alt={`${org} logo`} className="h-9 sm:h-10 object-contain" />
-    <img src={logo} alt="OnTap logo" className="h-8 sm:h-9 object-contain" />
+  <div className="flex items-center justify-between w-full px-5 pt-1 pb-1 -mt-3 ">
+
+    <img
+      src={belforlogo}
+      alt={`${org} logo`}
+      className="h-6 sm:h-9 object-contain -translate-x-6"
+    />
+
+    <img
+      src={logo}
+      alt="OnTap logo"
+      className="h-5 sm:h-8 object-contain translate-x-6"
+    />
   </div>
 
-  
-
-  {/* === Barcode section & Info === */}
-  <div className="flex flex-col items-center justify-center flex-grow px-8">
-    <Barcode
-      value={staffId || "N/A"}
-
-      format="CODE128"
-      width={1.8}
-      height={65}
-      displayValue={false}
-      background="#ffffff"
-      lineColor="#000000"
-    />
-    <p className="text-[#0B1E35] font-extrabold tracking-widest text-lg mt-1">
-      SCAN
-    </p>
-    <p className="text-[11px] text-center mt-2 leading-snug text-gray-700">
+  {/* === Barcode section === */}
+  <div className="flex-grow flex flex-col items-center justify-center px-8 -mt-1">
+  <Barcode
+    value={staffId || "N/A"}
+    //value={encodedValue}
+    format="CODE128"
+    width={2.5}
+    height={42.5}
+    displayValue={false}
+    background="#ffffff"
+    lineColor="#000000"
+  />
+  <p className="text-black font-semibold text-[11px] text-lg -mt-2">
+    SCAN
+  </p>
+  <p className="text-[6px] text-center mt-2 leading-snug text-gray-700">
       This cardholder is an authorized employee of{" "}
       <span className="font-semibold">{org}</span>. Verify credentials via the QR code.{" "}
       {org} is not liable for any actions taken without proper verification.
     </p>
-  </div>
-
-  {/* === Footer === */}
-  <div
-    className="w-full bg-[#14b8a6] text-white text-center py-2 text-sm font-medium tracking-wide"
-    style={{
-      marginBottom: "6px",
-    }}
-  >
-    For any suspicious activity, call {phoneNumber}
-  </div>
-
-  {/* === Invisible Spacer  === */}
-  <div className="h-[90px]"></div> 
+</div>
+</div>
+<div
+  className="w-full bg-[#14b8a6] text-white text-center py-1 text-[7px] font-medium "
+>
+  For any suspicious activity, call {phoneNumber}
 </div>
 
+
+</div>
+
+
+
+</div>
+</div>
+
+
+{/* ===== STATIC SECTION BELOW  ===== */}
+{showDetails && (
+  <>
+<div className="flex flex-col justify-start items-start  w-full -mt-24">
+
+  
+  {/* Department & Access Level */}
+  <div className="flex justify-center items-center rounded-lg w-full h-16 bg-gray-50">
+    <div className="flex flex-row justify-between items-center w-full px-4">
+      <div className="flex flex-col justify-start items-center gap-0.5">
+        <div className="text-sm text-neutral-900 font-semibold">{role}</div>
+        <div className="text-xs text-gray-500 font-medium">{department}</div>
+      </div>
+      <div className="flex flex-col justify-center items-center gap-0.5">
+        <div className="text-sm text-neutral-900 font-semibold">Standard</div>
+        <div className="text-xs text-gray-500 font-medium">Access Level</div>
       </div>
     </div>
+  </div>
+
+  {/* Expiry and Actions */}
+  <div className="flex flex-col justify-start items-start gap-4 w-full">
+    <div className="flex flex-row justify-start items-center gap-2">
+      <img width="16.3" height="16.3" src="/images/expiry.png" alt="Expiry icon" />
+      <div className="text-sm text-gray-600 font-medium">Expires: {validThru}</div>
+    </div>
+
+    <div className="flex flex-row justify-between items-center w-full">
+      <div className="flex flex-row justify-start items-center gap-4">
+        <img width="18.5" height="18.5" src="/images/pencil.png" alt="Edit" className="cursor-pointer hover:bg-gray-100 p-1 rounded transition" />
+        <img width="17.3" height="17.3" src="/images/download.png" alt="Download" className="cursor-pointer hover:bg-gray-100 p-1 rounded transition" />
+        <img width="16" height="18.5" src="/images/trash.png" alt="Delete" className="cursor-pointer hover:bg-gray-100 p-1 rounded transition" />
+      </div>
+
+      <div className="flex flex-row justify-center items-center gap-1 px-4 py-1.5 rounded-lg border border-teal-500 h-8 cursor-pointer hover:bg-teal-50 transition-all duration-200 ease-in-out shadow-sm hover:shadow-md mr-3 mb-3">
+
+        <img width="16" height="16" src="/images/preview.png" alt="Preview" />
+        <div className="text-xs text-teal-500 font-medium">Preview</div>
+      </div>
+    </div>
+  </div>
+</div>
+</>
+)}
+
+
+  </div>
+
+
+
+
+
   );
 };
 
