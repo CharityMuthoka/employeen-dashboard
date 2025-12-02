@@ -5,7 +5,6 @@ import Signin from './Signin';
 import Dashboard from './components/Dashboard';
 import Task from './components/Task';
 import Leave from './components/Leave';
-import Announcements from './components/Announcements';
 import Training from './components/Trainings';
 import Cards from './components/Cards';
 import Profile from './components/Profile';
@@ -27,8 +26,7 @@ function App() {
       case "leave":
         return <Leave setActivePage={setActivePage} activePage={activePage} />;
       case "announcements":
-        return <Announcements setActivePage={setActivePage} activePage={activePage} />;
-      case "trainings":
+        
         return <Training setActivePage={setActivePage} activePage={activePage} />;
       case "cards":
         return <Cards setActivePage={setActivePage} activePage={activePage} />;

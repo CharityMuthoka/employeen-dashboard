@@ -146,7 +146,7 @@ import belforlogo from "../assets/belfor_logo.png";
                       src="/images/belfor tech.png" 
                       alt={`${org} logo`} 
                       className="w-6 h-6 object-contain sm:w-4 sm:h-4"
-                    />        
+                    />    
                     <h1 className={`text-[12px] sm:text-[13px] font-bold tracking-wide leading-tight truncate max-w-[70px] sm:max-w-[80px] 
         ${bgColor === "silver-gradient" ? "text-gray-900" : "text-white"}`}>
         {org.split(" ")[0].toUpperCase()}
@@ -157,7 +157,9 @@ import belforlogo from "../assets/belfor_logo.png";
       ${bgColor === "silver-gradient" ? "text-gray-700" : "text-gray-300"}`}>
       {org.split(" ").slice(1).join(" ")}
     </p>
-    </div>
+    </div> 
+    
+    
                 
 
   
