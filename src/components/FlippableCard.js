@@ -1,5 +1,4 @@
 import React, { useState,useRef, useEffect} from "react";
-//import { QRCodeCanvas } from "qrcode.react";
 import Barcode from "react-barcode";
 import logo from "../assets/ontap.png";
 import belforlogo from "../assets/belfor_logo.png";
@@ -22,9 +21,6 @@ import belforlogo from "../assets/belfor_logo.png";
     }) => {
 
      
-    
-
-    //const encodedValue = `https://hrms.ontapke.com/user/${staffId}`;
 
     //const encodedValue = `${staffId}, ${name}, ${department}`;
 
@@ -389,8 +385,8 @@ import belforlogo from "../assets/belfor_logo.png";
     value={staffId || "N/A"}
     //value={encodedValue}
     format="CODE128"
-    width={2.5}
-    height={42.5}
+    width={1.5}
+    height={35.5}
     displayValue={false}
     background="#ffffff"
     lineColor="#000000"
