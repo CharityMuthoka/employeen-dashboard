@@ -34,18 +34,6 @@ const Dashboard = ({ setActivePage, activePage }) => {
     // Add API call  here
   };
 
-//dummy staff data
-const name="Victor Emefo";
-const role="Product Designer";
-const department="Design";
-const staffId="EMP4526";
-const validThru = "05/24/2026";
-const profileUrl = "/images/avatar_5.png";
-const org="Ontap Global Workspace";
-//const phoneNumber="0734253627";
-const signature="signature";
-//const websiteUrl="https://ontapke.com";
-
 
 
 
@@ -235,9 +223,6 @@ useEffect(() => {
         {/* Scrollable section */}
         <div className="flex flex-col gap-6 px-8 pt-[25px] pb-8 max-w-[calc(100vw-272px)] mt-[110px]">
           {/* Status Cards */}
-          {/*
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
-          */}
             
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1.4fr_1fr] gap-4 w-full items-start">
 
@@ -310,22 +295,6 @@ useEffect(() => {
               </div>
             </div>
 
-{/*
-<FlippableCard
-        name="Victor Emefo"
-        role="Product Designer"
-        department="Design"
-        staffId="EMP4526"
-        validThru="05/24/2026"
-        profileUrl="/images/avatar_5.png"
-        org="OnTap Global Workspace"
-        phoneNumber="0734253627"
-        signature="Signature"
-        websiteUrl="https://ontapke.com"
-        bgColor="#0B1E35"
-        showDetails={false}
-      />
-      */}
       
 
       {/* === Card Section === */}
@@ -344,10 +313,7 @@ useEffect(() => {
       bgColor = "#0B1E35"
       showDetails = {false}
       />
-  {/* 
-<FlippableCard/>
-*/}
-
+  
 
 
 

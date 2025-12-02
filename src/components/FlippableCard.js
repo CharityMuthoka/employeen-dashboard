@@ -139,13 +139,13 @@ import belforlogo from "../assets/belfor_logo.png";
               <div className="flex flex-col z-10 h-full flex-shrink-0 space-y-2   ">
               {/* Logo Section */}
               
-                <div className="flex flex-col items-start translate-x-4 sm:translate-x-6 w-[90px] sm:w-[100px] overflow-hidden">
+                <div className="flex flex-col items-start translate-x-4 sm:translate-x-6 ">
 
                   <div className="flex items-center space-x-1 truncate">
                     <img 
                       src="/images/belfor tech.png" 
                       alt={`${org} logo`} 
-                      className="w-3.5 h-3.5 object-contain sm:w-4 sm:h-4"
+                      className="w-6 h-6 object-contain sm:w-4 sm:h-4"
                     />        
                     <h1 className={`text-[12px] sm:text-[13px] font-bold tracking-wide leading-tight truncate max-w-[70px] sm:max-w-[80px] 
         ${bgColor === "silver-gradient" ? "text-gray-900" : "text-white"}`}>
@@ -153,7 +153,7 @@ import belforlogo from "../assets/belfor_logo.png";
       </h1>
                     
                   </div>
-                  <p className={`text-[6.5px] sm:text-[7px] tracking-widest uppercase leading-tight truncate max-w-[90px] sm:max-w-[100px] 
+                  <p className={`text-[6.5px] ml-5 sm:text-[7px] tracking-widest uppercase leading-tight truncate max-w-[90px] sm:max-w-[100px] 
       ${bgColor === "silver-gradient" ? "text-gray-700" : "text-gray-300"}`}>
       {org.split(" ").slice(1).join(" ")}
     </p>
