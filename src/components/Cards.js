@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-//import { QRCodeCanvas } from 'qrcode.react';
 import FlippableCard from "./FlippableCard.js";
 
 
@@ -226,8 +225,6 @@ const Cards = ({ setActivePage, activePage }) => {
     <>
 
   {/* === Card Section Grid === */}
-
-
 <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-4">
 
 

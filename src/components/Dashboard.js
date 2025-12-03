@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect} from "react";
 import LeaveModal from "./LeaveModal.js";
 import LogTaskModal from "./LogTaskModal.js";
-//import { QRCodeCanvas } from 'qrcode.react';
+
 
 
 import FlippableCard from "./FlippableCard.js";
@@ -205,7 +205,7 @@ useEffect(() => {
                   alt="Notification icon"
                 />
               </div>
-              {/*  thin vertical line */}
+              {/*  divider*/}
               <div className="w-px h-6 bg-gray-300"></div>
               <img
                 className="rounded-full border-2"

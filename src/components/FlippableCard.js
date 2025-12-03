@@ -101,10 +101,6 @@ import belforlogo from "../assets/belfor_logo.png";
   
   preserveAspectRatio="none"
 >
-  
-
-
-
 
   {/* === Bottom-Left Reflective Waves === */}
   {Array.from({ length: 14 }).map((_, i) => {
@@ -155,10 +151,7 @@ import belforlogo from "../assets/belfor_logo.png";
     </p>
     </div> 
     
-    
-                
-
-  
+   
 
   {/* === Top-Right Metallic Circle Section === */}
 <div className="absolute top-0.5 right-3 w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden flex items-center justify-center shadow-md">
